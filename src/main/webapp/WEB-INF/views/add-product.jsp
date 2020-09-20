@@ -25,44 +25,38 @@
 <div class="container">
     <div class="row" style="margin-top: 40px">
         <div class="col-1"></div>
-        <div class="col-10" style="padding-bottom: 20px"><h2>Rejestracja</h2></div>
+        <div class="col-10" style="padding-bottom: 20px"><h2>Nowy produkt</h2></div>
         <div class="col-1"></div>
     </div>
     <div class="row">
         <div class="col-1"></div>
         <div class="col-6">
-            <form:form method="post" action="/register" modelAttribute="user">
+            <form:form method="post" action="/admin/add" modelAttribute="product">
                 <div class="form-group">
-                    <label for="username">Nazwa użytkownika</label>
-                    <input type="text" required name="username" id="username" class="form-control"
-                           placeholder="Podaj nazwę użytkownika"/>
-                    <form:errors path="username" cssClass="error"/><br>
+                    <label for="name">Nazwa Produktu</label>
+                    <input type="text" required name="name" id="name" class="form-control"
+                           placeholder="Podaj nazwę Produktu"/>
+                    <form:errors path="name" cssClass="error"/><br>
                 </div>
                 <div class="form-group">
-                    <label for="username">Email</label>
-                    <input type="text" required name="email" id="email" class="form-control"
-                           placeholder="Podaj Email"/>
-                    <form:errors path="email" cssClass="error"/><br>
+                    <label for="description">Opis produktu</label>
+                    <input type="text" required name="description" id="description" class="form-control"
+                           placeholder="Wpisz opis produktu"/>
+                    <form:errors path="description" cssClass="error"/><br>
                 </div>
                 <div class="form-group">
-                    <label for="firstName">Imię</label>
-                    <input type="text" required name="firstName" id="firstName" class="form-control"
-                           placeholder="Podaj imię"/>
-                    <form:errors path="firstName" cssClass="error"/><br>
+                    <label for="quantity">Ilość produktu</label>
+                    <input type="text" required name="quantity" id="quantity" class="form-control"
+                           placeholder="Wpisz ilość"/>
+                    <form:errors path="quantity" cssClass="error"/><br>
                 </div>
                 <div class="form-group">
-                    <label for="lastName">Nazwisko</label>
-                    <input type="text" required name="lastName" id="lastName" class="form-control"
-                           placeholder="Podaj nazwisko"/>
-                    <form:errors path="lastName" cssClass="error"/><br>
+                    <label for="price">Cena</label>
+                    <input type="text" required name="price" id="price" class="form-control"
+                           placeholder="Podaj cenę produktu"/>
+                    <form:errors path="price" cssClass="error"/><br>
                 </div>
-                <div class="form-group">
-                    <label for="password">Hasło</label>
-                    <input type="password" required name="password" id="password" class="form-control"
-                           placeholder="Podaj hasło"/>
-                    <form:errors path="password" cssClass="error"/><br>
-                </div>
-                <button class="btn btn-primary" type="submit">Zarejestruj</button>
+                <button class="btn btn-primary" type="submit">Zapisz</button>
                 <button class="btn btn-secondary" type="reset">Wyczyść dane</button>
                 <sec:csrfInput/>
             </form:form>

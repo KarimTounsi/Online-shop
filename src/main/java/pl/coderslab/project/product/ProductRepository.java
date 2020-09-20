@@ -1,2 +1,8 @@
-package pl.coderslab.project.product;public interface ProductRepository {
+package pl.coderslab.project.product;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProductRepository extends JpaRepository<Product, Long> {
+
+
 }

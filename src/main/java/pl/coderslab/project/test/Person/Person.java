@@ -1,4 +1,4 @@
-package pl.coderslab.project.Person;
+package pl.coderslab.project.test.Person;
 
 public class Person {
 

@@ -1,4 +1,4 @@
-package pl.honestit.spring.demo.config;
+package pl.coderslab.project.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
