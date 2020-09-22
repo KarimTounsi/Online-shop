@@ -10,30 +10,17 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
     <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
     </style>
     <!-- Custom styles for this template -->
 <%--    <link href="jumbotron.css" rel="stylesheet">--%>
 </head>
 <body>
-
 <jsp:include page="fragments/main-menu.jsp"/>
 
-<table class="table">
+
+<table class="table view-all-products" style="margin-top: 50px">
     <thead class="thead-dark">
     <tr>
         <th scope="col">#</th>
@@ -56,6 +43,8 @@
     </c:forEach>
     </tbody>
 </table>
+
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
