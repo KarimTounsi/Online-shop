@@ -1,12 +1,10 @@
 package pl.coderslab.project.user;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -22,21 +20,10 @@ UserRepository userRepository;
 return "home-page";
     }
 
-//    @PostMapping("/add-advert-to-observed")
-//    public String addToObserved(@RequestParam Long advertId, Principal principal) {
-////        String userName =  principal.getName();
-////        User user = userRepository.findByUsername(userName);
-////        userRepository.save(user);
-//        return "redirect:/";
-//    }
-//
-//    @PostMapping("/subtract-advert-to-observed")
-//    public String subtractToObserved(@RequestParam Long advertId, Principal principal) {
-//        String userName =  principal.getName();
-//        User user = userRepository.findByUsername(userName);
-////        userRepository.save(user);
-//        return "redirect:/";
-//    }
-
-
+    @GetMapping("/admin")
+    @ResponseBody
+    public String admin(@AuthenticationPrincipal CurrentUser customUser) {
+        User entityUser = customUser.getUser();
+        return "Hello " + entityUser.getUsername();
+    }
 }

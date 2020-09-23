@@ -52,8 +52,15 @@
                 <button class="btn btn-success my-2 my-sm-0 mr-sm-2" type="submit">Zarejestruj</button>
                 <sec:csrfInput/>
             </form>
-            <sec:authorize access="!isAuthenticated()">
-            <div style=" margin-right: 20px" class="nav-div " > Witaj, <strong>nieznajomy</strong></div>
+<%--            <sec:authorize access="!isAuthenticated()">--%>
+<%--            <div style=" margin-right: 20px" class="nav-div " > Witaj, <strong>nieznajomy</strong></div>--%>
+<%--        </sec:authorize>--%>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            MAM ROLE ADMIN
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+            <p>Zalogowany jako: <sec:authentication property="name"/></p>
+            <p>Posiada role: <sec:authentication property="authorities"/></p>
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
                 <div style="margin-right: 20px"   class="nav-div" > Witaj, <strong >${pageContext.request.userPrincipal.principal.username}</strong></div>

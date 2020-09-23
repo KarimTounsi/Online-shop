@@ -26,7 +26,7 @@
         <th scope="col">#</th>
         <th scope="col">Nazwa</th>
         <th scope="col">Opis</th>
-        <th scope="col">ilość</th>
+        <th scope="col">Status</th>
         <th scope="col">Cena</th>
     </tr>
     </thead>
@@ -37,7 +37,16 @@
         <th scope="row">${theCount.index +1}</th>
         <td>${product.name}</td>
         <td>${product.description}</td>
-        <td>${product.quantity}</td>
+        <td>
+            <c:choose>
+                <c:when test="${product.quantity > 1}">
+                  <p class="text-success" >Dostępny</p>
+                </c:when>
+            <c:otherwise>
+                <p class="text-danger" >Nie dostępny</p>
+            </c:otherwise>
+            </c:choose>
+        </td>
         <td>${product.price}</td>
     </tr>
     </c:forEach>

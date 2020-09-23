@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.context.annotation.Role;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

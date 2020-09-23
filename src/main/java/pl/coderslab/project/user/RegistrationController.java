@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 import javax.validation.Valid;
-import java.lang.reflect.Array;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+
 
 
 @Controller
@@ -24,9 +21,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class RegistrationController {
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
-//    private final RoleRepository roleRepository;
+    private final UserService userService;
 
 
     // Konfiguracja Logger'a
@@ -45,13 +40,7 @@ public class RegistrationController {
         if (bindingResult.hasErrors()){
             return "registration-form";
         }
-//        Role role = roleRepository.findById(Long.parseLong("1")).get();
-        //        user.setRole(role);
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-        user.setActive(true);
-        user.getRoles().add("ROLE_CLIENT");
-        userRepository.save(user);
+        userService.saveUser(user);
         log.info("Zapisany użytkownik: " + user);
         return "redirect:/login";
     }

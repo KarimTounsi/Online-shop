@@ -30,8 +30,10 @@
             }
         }
     </style>
-    <!-- Custom styles for this template -->
-    <%--    <link href="jumbotron.css" rel="stylesheet">--%>
+
+<%--    Custom styles for this template --%>
+<%--      <link href="jumbotron.css" rel="stylesheet">--%>
+
 </head>
 <body>
 

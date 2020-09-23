@@ -23,6 +23,8 @@ public class viewAllProductsController {
 
     @GetMapping
     public String viewProducts() {
+
+
         return "view-all-products";
     }
 
