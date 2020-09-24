@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import pl.coderslab.project.user.SpringDataUserDetailsService;
+
 
 import javax.sql.DataSource;
 
@@ -27,9 +27,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
 
                 .antMatchers("/","/js/**", "/css/**","/img/**").permitAll()
-                .antMatchers("/register").permitAll()
+                .antMatchers("/register","/all","/search/**").permitAll()
                 .antMatchers("/login").anonymous()
-//                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -51,10 +51,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder())
                 .usersByUsernameQuery("SELECT username, password, active FROM users WHERE username = ?")
-                .authoritiesByUsernameQuery("SELECT username, 'ROLE_USER' FROM users WHERE username = ?");
+                .authoritiesByUsernameQuery("SELECT username, roles FROM users join user_roles ur on users.user_id = ur.user_user_id WHERE username = ?");
     }
-    @Bean
-    public SpringDataUserDetailsService customUserDetailsService() {
-        return new SpringDataUserDetailsService();
-    }
+
+
+//    @Bean
+//    public SpringDataUserDetailsService customUserDetailsService() {
+//        return new SpringDataUserDetailsService();
+//    }
+
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(customUserDetailsService())
+//                .passwordEncoder(passwordEncoder());
+//    }
+
 }

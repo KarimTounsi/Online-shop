@@ -1,6 +1,7 @@
 package pl.coderslab.project.product;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -8,17 +9,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.coderslab.project.category.Category;
+import pl.coderslab.project.category.CategoryService;
 
 
 import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin/add")
-@AllArgsConstructor
+@RequestMapping("/admin/product/add")
+
 public class AddProductController {
 
-    ProductRepository productRepository;
+    ProductService productService;
+    CategoryService categoryService;
+
+    public AddProductController(ProductService productService, @Qualifier("categoryServiceImpl") CategoryService categoryService) {
+        this.productService = productService;
+        this.categoryService = categoryService;
+    }
 
     @GetMapping
     public String addProduct(Model model) {
@@ -31,12 +40,16 @@ public class AddProductController {
         if (bindingResult.hasErrors()){
             return "add-product";
         }
-        productRepository.save(product);
+        productService.saveProduct(product);
 
-        return "redirect:/admin/add";
+        return "redirect:/admin/product/add";
     }
 
 
+    @ModelAttribute("categories")
+    public List<Category> getAllCategories() {
+        return categoryService.getAll();
+    }
 
 
 }

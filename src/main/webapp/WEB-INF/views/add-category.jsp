@@ -14,41 +14,19 @@
 <div class="container add-product">
     <div class="row" style="margin-top: 40px">
         <div class="col-1"></div>
-        <div class="col-10" style="padding-bottom: 20px"><h2>Nowy produkt</h2></div>
+        <div class="col-10" style="padding-bottom: 20px"><h2>Nowa kategoria</h2></div>
         <div class="col-1"></div>
     </div>
     <div class="row">
         <div class="col-1"></div>
         <div class="col-6">
-            <form:form method="post" action="/admin/product/add" modelAttribute="product">
+            <form:form method="post" action="/admin/category/add" modelAttribute="category">
                 <div class="form-group">
-                    <label for="name">Nazwa Produktu</label>
+                    <label for="name">Nazwa Kategorii</label>
                     <input type="text" required name="name" id="name" class="form-control"
-                           placeholder="Podaj nazwę Produktu"/>
+                           placeholder="Podaj nazwę kategorii"/>
                     <form:errors path="name" cssClass="error"/><br>
                 </div>
-                <div class="form-group">
-                    <label for="description">Opis produktu</label>
-                    <input type="text" required name="description" id="description" class="form-control"
-                           placeholder="Wpisz opis produktu"/>
-                    <form:errors path="description" cssClass="error"/><br>
-                </div>
-                <div class="form-group">
-                    <label for="quantity">Ilość produktu</label>
-                    <input type="text" required name="quantity" id="quantity" class="form-control"
-                           placeholder="Wpisz ilość"/>
-                    <form:errors path="quantity" cssClass="error"/><br>
-                </div>
-                <div class="form-group">
-                    <label for="price">Cena</label>
-                    <input type="text" required name="price" id="price" class="form-control"
-                           placeholder="Podaj cenę produktu"/>
-                    <form:errors path="price" cssClass="error"/><br>
-                </div>
-                Kategoria: <form:select path="category.id">
-                <form:option value="0" label="wybierz kategorie"/>
-                <form:options items="${categories}" itemValue="id" itemLabel="name"/>
-            </form:select>
                 <button class="btn btn-primary" type="submit">Zapisz</button>
                 <button class="btn btn-secondary" type="reset">Wyczyść dane</button>
                 <sec:csrfInput/>

@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.coderslab.project.category.Category;
+import pl.coderslab.project.category.CategoryService;
 
 import java.util.List;
 
@@ -14,6 +16,8 @@ import java.util.List;
 public class viewAllProductsController {
 
     ProductRepository productRepository;
+    CategoryService categoryService;
+
 
     @ModelAttribute("products")
     public List<Product> getAll() {
@@ -26,6 +30,11 @@ public class viewAllProductsController {
 
 
         return "view-all-products";
+    }
+
+    @ModelAttribute("categories")
+    public List<Category> getAllCategories() {
+        return categoryService.getAllSorted();
     }
 
 }
