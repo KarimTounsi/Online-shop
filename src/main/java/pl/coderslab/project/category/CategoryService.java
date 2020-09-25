@@ -10,5 +10,11 @@ public interface CategoryService {
 
  List<Category> getAllSorted();
 
- Category getById(Long id );
+ Category getById(Long id);
+
+ void deleteCategoryById(Long id);
+
+ void deleteAllCategories();
+
+
 }

@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
-public class CategoryServiceImpl implements CategoryService{
+public class CategoryServiceImpl implements CategoryService {
 
     CategoryRepository categoryRepository;
 
@@ -20,7 +20,7 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public List<Category> getAll() {
-       return categoryRepository.findAll();
+        return categoryRepository.findAll();
     }
 
 
@@ -37,6 +37,16 @@ public class CategoryServiceImpl implements CategoryService{
         } else {
             return null;
         }
+    }
+
+    @Override
+    public void deleteCategoryById(Long id) {
+        categoryRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteAllCategories() {
+        categoryRepository.deleteAll();
     }
 
 

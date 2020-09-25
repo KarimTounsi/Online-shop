@@ -28,6 +28,37 @@
         <th scope="col">Opis</th>
         <th scope="col">Status</th>
         <th scope="col">Cena</th>
+
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <th scope="col">Edycja</th>
+            <th scope="col"><button type="button" class="btn btn-primary button-delete-all" data-toggle="modal" data-target="#exampleModalCenter">
+                Usuwanie
+                (Usuń wszystko)</button>
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+                    <div class="modal-dialog modal-dialog-centered" role="document" >
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Uwaga</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Czy na pewno chcesz usunąć wszystkie produkty ?
+                            </div>
+                            <div class="modal-footer" >
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                                <form class="form-inline my-2 my-lg-0" method="post" action="/admin/product/delete/all">
+                                    <button type="submit" class="btn btn-primary">Potwierdź</button>
+                                    <sec:csrfInput/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div></th>
+        </sec:authorize>
+
+
     </tr>
     </thead>
     <tbody>
@@ -48,6 +79,20 @@
             </c:choose>
         </td>
         <td>${product.price}</td>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <td>
+                <form class="form-inline my-2 my-lg-0" method="get" action="/admin/product/edit">
+                    <button class="btn btn-primary my-2 my-sm-0 mr-sm-2" name="id" value="${product.id}" type="submit">Edytuj</button>
+                    <sec:csrfInput/>
+                </form>
+            </td>
+            <td>
+                <form class="form-inline my-2 my-lg-0" method="post" action="/admin/product/delete">
+                    <button class="btn btn-danger my-2 my-sm-0 mr-sm-2" name="id" value="${product.id}" type="submit">Usuń</button>
+                    <sec:csrfInput/>
+                </form>
+            </td>
+        </sec:authorize>
     </tr>
     </c:forEach>
     </tbody>

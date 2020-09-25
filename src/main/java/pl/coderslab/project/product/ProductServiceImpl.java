@@ -24,6 +24,25 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> productsByCategory(Category category) {
-      return   productRepository.findProductsByCategory(category);
+        return productRepository.findProductsByCategory(category);
+    }
+
+    @Override
+    public Product getProductById(Long id) {
+        if (productRepository.findById(id).isPresent()) {
+            return productRepository.findById(id).get();
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public void deleteProductById(Long id) {
+        productRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteAllProducts() {
+        productRepository.deleteAll();
     }
 }

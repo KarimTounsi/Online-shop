@@ -14,5 +14,10 @@ public interface ProductService {
 
    List <Product> productsByCategory(Category category);
 
+   Product getProductById(Long id);
+
+   void deleteProductById(Long id);
+
+   void deleteAllProducts();
 
 }

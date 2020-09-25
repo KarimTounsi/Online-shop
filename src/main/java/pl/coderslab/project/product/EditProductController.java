@@ -1,6 +1,5 @@
 package pl.coderslab.project.product;
 
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,42 +8,42 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.project.category.Category;
 import pl.coderslab.project.category.CategoryService;
 
-
 import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin/product/add")
-public class AddProductController {
+@RequestMapping("/admin/product/edit")
+public class EditProductController {
 
     ProductService productService;
     CategoryService categoryService;
 
-    public AddProductController(ProductService productService, @Qualifier("categoryServiceImpl") CategoryService categoryService) {
+    public EditProductController(ProductService productService, @Qualifier("categoryServiceImpl") CategoryService categoryService) {
         this.productService = productService;
         this.categoryService = categoryService;
     }
 
     @GetMapping
-    public String addProduct(Model model) {
-        model.addAttribute("product", new Product());
-        return "add-product";
+    public String editProduct(Model model, @RequestParam Long id) {
+        Product product = productService.getProductById(id);
+        model.addAttribute("product", product);
+        return "edit-product";
     }
 
     @PostMapping
-    public String addProduct(@Valid Product product, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()){
-            return "add-product";
+    public String editProduct(@Valid Product product, BindingResult result) {
+        if (result.hasErrors()) {
+            return "edit-product";
         }
         productService.saveProduct(product);
-
-        return "redirect:/admin/product/add";
+        return "redirect:/all";
     }
+
 
 
     @ModelAttribute("categories")
     public List<Category> getAllCategories() {
-        return categoryService.getAll();
+        return categoryService.getAllSorted();
     }
 
 

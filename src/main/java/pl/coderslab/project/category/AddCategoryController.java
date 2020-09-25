@@ -15,11 +15,11 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/admin/category/add")
 
-public class CategoryController {
+public class AddCategoryController {
 
     CategoryService categoryService;
 
-    public CategoryController(@Qualifier("categoryServiceImpl") CategoryService categoryService) {
+    public AddCategoryController(@Qualifier("categoryServiceImpl") CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
