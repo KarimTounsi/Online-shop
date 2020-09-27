@@ -38,9 +38,12 @@
                    name="search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Znajdź</button>
         </form:form>
-
+        <ul class="navbar-nav ">
+            <li class="nav-item ">
+                <a class="nav-link" href="/info">Konto</a>
+            </li>
         <sec:authorize access="hasRole('ROLE_ADMIN')">
-            <ul class="navbar-nav ">
+
                 <li class="nav-item ">
                     <a class="nav-link" href="/admin/category/all">Lista kategorii</a>
                 </li>
@@ -50,9 +53,9 @@
                 <li class="nav-item ">
                     <a class="nav-link" href="/admin/product/add">Dodaj produkt</a>
                 </li>
-            </ul>
-        </sec:authorize>
 
+        </sec:authorize>
+        </ul>
         <sec:authorize access="!isAuthenticated()">
             <form class="form-inline my-2 my-lg-0" method="get" action="/login">
                 <button class="btn btn-primary my-2 my-sm-0 mr-sm-2" type="submit">Zaloguj</button>

@@ -34,12 +34,12 @@ public class User {
         @NotEmpty(message = "*Proszę podać swoje hasło")
         private String password;
 
-        @Column(name = "username", nullable = false, unique = true)
+        @Column(name = "name", nullable = false, unique = true)
         @Length(min = 5, message = "*Twoja nazwa użytkownika musi mieć co najmniej 5 znaków")
         @NotEmpty(message = "*Proszę podać swoje imię i nazwisko")
         private String username;
 
-        @Column(name = "name")
+        @Column(name = "first_name")
         @NotEmpty(message = "*Proszę podać swoje imię i nazwisko")
         private String firstName;
 

@@ -13,7 +13,6 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/")
-
 public class HomePageController {
 
     CategoryService categoryService;

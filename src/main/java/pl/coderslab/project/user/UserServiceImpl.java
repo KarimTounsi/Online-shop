@@ -16,8 +16,8 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User findByUserName(String username) {
-        return userRepository.findByUserName(username);
+    public User findByUserName(String name) {
+        return userRepository.findUserByUsername(name);
     }
 
 
@@ -25,7 +25,14 @@ public class UserServiceImpl implements UserService {
     public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setActive(true);
-        user.getRoles().add("ROLE_ADMIN");
+        user.getRoles().add("ROLE_CLIENT");
+        userRepository.save(user);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        user.setActive(true);
+        user.getRoles().add("ROLE_CLIENT");
         userRepository.save(user);
     }
 

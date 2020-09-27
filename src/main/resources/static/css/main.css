@@ -22,3 +22,10 @@
 .modal-body{
      color: black;
 }
+.info-list{
+     margin-top:150px;
+}
+
+.error{
+     color: red;
+}
