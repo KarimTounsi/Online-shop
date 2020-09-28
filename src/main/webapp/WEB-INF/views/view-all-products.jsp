@@ -27,7 +27,9 @@
         <th scope="col">Opis</th>
         <th scope="col">Status</th>
         <th scope="col">Cena</th>
-
+<sec:authorize access="isAuthenticated()">
+        <th scope="col"></th>
+</sec:authorize>
         <sec:authorize access="hasRole('ROLE_ADMIN')">
             <th scope="col">Edycja</th>
             <th scope="col"><button type="button" class="btn btn-primary button-delete-all" data-toggle="modal" data-target="#exampleModalCenter">
@@ -77,6 +79,14 @@
                 </c:choose>
             </td>
             <td>${product.price}</td>
+            <sec:authorize access="isAuthenticated()">
+            <td>
+                <form class="form-inline my-2 my-lg-0" method="post" action="/product/add/cart">
+                    <button class="btn btn-danger my-2 my-sm-0 mr-sm-2" name="id" value="${product.id}" type="submit">Dodaj do koszyka</button>
+                    <sec:csrfInput/>
+                </form>
+            </td>
+            </sec:authorize>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <td>
                     <form class="form-inline my-2 my-lg-0" method="get" action="/admin/product/edit">

@@ -73,3 +73,51 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+--                <form:form method="post" action="" id="buttonOrder">--%>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" required name="email" id="email" class="form-control"
+                                   placeholder="Podaj Email" value="${user.email}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstName">Imię</label>
+                            <input type="text" required name="firstName" id="firstName" class="form-control"
+                                   placeholder="Podaj imię" value="${user.firstName}"/>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Nazwisko</label>
+                            <input type="text" required name="lastName" id="lastName" class="form-control" value="${user.lastName}"
+                                   placeholder="Podaj nazwisko"/>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Adres</label>
+                            <input type="text" required name="Address" id="Address" class="form-control"
+                                   placeholder="Podaj Adres"/>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Kraj</label>
+                            <input type="text" required name="country" id="country" class="form-control"
+                            placeholder="Podaj nazwę Kraju"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">województwo</label>
+                            <input type="text" required name="voivodeship" id="voivodeship" class="form-control"
+                                   placeholder="Podaj nazwę województwa"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Miasto</label>
+                            <input type="text" required name="City" id="City" class="form-control"
+                                   placeholder="Podaj nazwę miasta"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Kod pocztowy</label>
+                            <input type="text" required name="postcode" id="postcode" class="form-control"
+                                   placeholder="Podaj kod pocztowy"/>
+                        </div>
+                        <sec:csrfInput/>
+                    </form:form>

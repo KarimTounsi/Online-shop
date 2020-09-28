@@ -11,7 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "product")
@@ -43,6 +43,19 @@ public class Product {
 
     @ManyToOne
     Category category;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id.equals(product.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
     @Override
     public String toString() {

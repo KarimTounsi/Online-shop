@@ -38,10 +38,15 @@
                    name="search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Znajdź</button>
         </form:form>
+        <sec:authorize access="isAuthenticated()">
         <ul class="navbar-nav ">
+            <li class="nav-item ">
+                <a class="nav-link" href="/cart">Koszyk</a>
+            </li>
             <li class="nav-item ">
                 <a class="nav-link" href="/info">Konto</a>
             </li>
+            </sec:authorize>
         <sec:authorize access="hasRole('ROLE_ADMIN')">
 
                 <li class="nav-item ">
