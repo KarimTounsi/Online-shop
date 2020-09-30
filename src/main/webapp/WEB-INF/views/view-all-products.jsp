@@ -80,12 +80,24 @@
             </td>
             <td>${product.price}</td>
             <sec:authorize access="isAuthenticated()">
+                <c:choose>
+                <c:when test="${product.quantity > 1}">
             <td>
                 <form class="form-inline my-2 my-lg-0" method="post" action="/product/add/cart">
-                    <button class="btn btn-danger my-2 my-sm-0 mr-sm-2" name="id" value="${product.id}" type="submit">Dodaj do koszyka</button>
+                    <button class="btn btn-success my-2 my-sm-0 mr-sm-2" name="id" value="${product.id}" type="submit">Dodaj do koszyka</button>
                     <sec:csrfInput/>
                 </form>
             </td>
+                </c:when>
+                    <c:otherwise>
+                        <td>
+                            <form class="form-inline my-2 my-lg-0" method="post" action="/product/add/cart">
+                                <button class="btn btn-success my-2 my-sm-0 mr-sm-2" name="id" value="${product.id}" type="submit" disabled>Dodaj do koszyka</button>
+                                <sec:csrfInput/>
+                            </form>
+                        </td>
+                    </c:otherwise>
+                </c:choose>
             </sec:authorize>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <td>

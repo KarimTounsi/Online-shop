@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.project.category.Category;
 
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -44,5 +45,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteAllProducts() {
         productRepository.deleteAll();
+    }
+
+    @Override
+    public Optional<Product> findById(Long id) {
+        return productRepository.findById(id);
     }
 }

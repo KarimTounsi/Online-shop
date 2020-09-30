@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "category")
+@Table(name = "categories")
 @Getter
 @Setter
 @NoArgsConstructor

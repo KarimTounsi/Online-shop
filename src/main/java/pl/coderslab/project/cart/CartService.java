@@ -13,10 +13,12 @@ public interface CartService {
     void addProduct(Product product)throws NotEnoughProductsInStockException;
 
     void removeProduct(Product product);
+
     void subtractProduct(Product product);
 
     Map<Product, Integer> getProductsInCart();
 
+    void checkout() throws NotEnoughProductsInStockException;
 
     BigDecimal getTotal();
 }

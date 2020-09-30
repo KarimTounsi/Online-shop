@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
-@Table(name = "product")
+@Table(name = "products")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -59,12 +59,12 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                '}';
+        return
+                "Id = " + id +
+                ", Nazwa = " + name +
+                ", Opis = " + description  +
+                ", Dostępna ilość w magazynie = " + quantity +
+                ", Cena = " + price +
+                "Ilość ";
     }
 }

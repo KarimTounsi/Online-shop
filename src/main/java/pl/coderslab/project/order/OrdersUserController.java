@@ -1,34 +1,36 @@
-package pl.coderslab.project.user;
+package pl.coderslab.project.order;
 
 import lombok.AllArgsConstructor;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.project.category.Category;
 import pl.coderslab.project.category.CategoryService;
-
 
 import java.security.Principal;
 import java.util.List;
 
 @Controller
-@RequestMapping("/info")
+@RequestMapping("/user/orders")
 @AllArgsConstructor
-public class infoUserController {
-    UserService userService;
+public class OrdersUserController {
+
+    OrderService orderService;
     CategoryService categoryService;
 
-
     @GetMapping
-    public String prepareHomePage(Model model, Principal principal) {
-        String name = principal.getName();
-      User user =  userService.findByUserName(name);
-        model.addAttribute("user",user);
-        return "info-account";
+    public String viewAllOrders() {
+        return "view-user-orders";
     }
+
+
+    @ModelAttribute("userOrders")
+    public List<Order> getAll(Principal principal) {
+        return orderService.getOrdersByUserUsername(principal.getName());
+    }
+
 
     @ModelAttribute("categories")
     public List<Category> getAllCategories() {

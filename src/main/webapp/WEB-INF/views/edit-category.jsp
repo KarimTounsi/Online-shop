@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-<jsp:include page="fragments/one-button-menu.jsp"/>
+<jsp:include page="fragments/main-menu.jsp"/>
 <div class="container add-product">
     <div class="row" style="margin-top: 40px">
         <div class="col-1"></div>

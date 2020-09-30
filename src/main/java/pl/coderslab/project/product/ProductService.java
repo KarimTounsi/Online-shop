@@ -5,6 +5,7 @@ package pl.coderslab.project.product;
 import pl.coderslab.project.category.Category;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductService {
 
@@ -19,5 +20,7 @@ public interface ProductService {
    void deleteProductById(Long id);
 
    void deleteAllProducts();
+
+   Optional<Product> findById(Long id);
 
 }

@@ -44,21 +44,24 @@
                 <a class="nav-link" href="/cart">Koszyk</a>
             </li>
             <li class="nav-item ">
+                <a class="nav-link" href="/user/orders">Zamówienia</a>
+            </li>
+            <li class="nav-item ">
                 <a class="nav-link" href="/info">Konto</a>
             </li>
             </sec:authorize>
         <sec:authorize access="hasRole('ROLE_ADMIN')">
-
-                <li class="nav-item ">
-                    <a class="nav-link" href="/admin/category/all">Lista kategorii</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="/admin/category/add">Dodaj kategorie</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="/admin/product/add">Dodaj produkt</a>
-                </li>
-
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">Strony admina
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdown02">
+                    <a class="dropdown-item" href="/admin/orders/all">Zamówienia użytkowników</a>
+                    <a class="dropdown-item" href="/admin/category/all">Lista kategorii</a>
+                    <a class="dropdown-item" href="/admin/category/add">Dodaj kategorie</a>
+                    <a class="dropdown-item" href="/admin/product/add">Dodaj produkt</a>
+                </div>
+            </li>
         </sec:authorize>
         </ul>
         <sec:authorize access="!isAuthenticated()">

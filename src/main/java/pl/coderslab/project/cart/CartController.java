@@ -5,9 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.project.cart.exception.NotEnoughProductsInStockException;
+import pl.coderslab.project.category.Category;
+import pl.coderslab.project.category.CategoryService;
 import pl.coderslab.project.product.Product;
 import pl.coderslab.project.product.ProductService;
 
+import java.util.List;
 
 
 @Controller
@@ -17,6 +20,7 @@ public class CartController {
 
     ProductService productService;
     CartService cartService;
+    CategoryService categoryService;
 
     @GetMapping("/cart")
     public String cart(Model model) {
@@ -29,7 +33,9 @@ public class CartController {
     @PostMapping("/product/add/cart")
     public String productAddToCart( Long id ) throws NotEnoughProductsInStockException {
            Product product = productService.getProductById(id);
-       cartService.addProduct(product);
+           if (product.getQuantity()>1){
+               cartService.addProduct(product);
+           }
         return "redirect:/cart";
     }
 
@@ -45,6 +51,11 @@ public class CartController {
         Product product = productService.getProductById(id);
         cartService.removeProduct(product);
         return "redirect:/cart";
+    }
+
+    @ModelAttribute("categories")
+    public List<Category> getAllCategories() {
+        return categoryService.getAllSorted();
     }
 
 }

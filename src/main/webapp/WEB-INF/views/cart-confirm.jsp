@@ -86,7 +86,7 @@
                         <td class="text-right">${transport} PLN</td>
                     </tr>
                     <tr>
-                        <td></td>
+                        <td> </td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -97,78 +97,116 @@
                 </table>
             </div>
         </div>
-        <c:choose>
-            <c:when test="${transport > 16}">
-                <form method="post" action="" id="buttonOrder">
+
+                <form:form method="post" action="/cart/confirm" id="buttonOrder" modelAttribute="address">
+                    <input type="text" class="form-control"  name="transport" id="transport" value="${transport}"  hidden/>
+                    <input type="text" class="form-control"  name="sum" id="sum" value="${cartSum + transport}"  hidden/>
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
-                            <label for="validationDefault01">Email</label>
-                            <input type="text" class="form-control"  name="email" id="validationDefault01" value="${user.email}"  placeholder="Podaj Email" required/>
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control"  name="email" id="email" value="${user.email}"  placeholder="Podaj Email" required/>
+                            <form:errors path="email" cssClass="error"/><br>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="validationDefault02">Imię</label>
-                            <input type="text" class="form-control" name="firstName" id="validationDefault02"  value="${user.firstName}" placeholder="Podaj imię" required/>
+                            <label for="firstName">Imię</label>
+                            <input type="text" class="form-control" name="firstName" id="firstName"  value="${user.firstName}" placeholder="Podaj imię" required/>
+                            <form:errors path="firstName" cssClass="error"/><br>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="validationDefault03">Nazwisko</label>
-                            <input type="text" class="form-control"  name="lastName" id="validationDefault03" placeholder="Podaj nazwisko" value="${user.lastName}"  required>
+                            <label for="lastName">Nazwisko</label>
+                            <input type="text" class="form-control"  name="lastName" id="lastName" placeholder="Podaj nazwisko" value="${user.lastName}"  required>
+                            <form:errors path="lastName" cssClass="error"/><br>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
-                            <label for="validationDefault04">Adres</label>
-                            <input type="text" class="form-control" name="Address"  placeholder="Podaj Adres" id="validationDefault04" required>
+                            <label for="streetHome">Ulica, mieszkanie</label>
+                            <input type="text" class="form-control" name="streetHome"  placeholder="Podaj Adres" id="streetHome" required>
+                            <form:errors path="streetHome" cssClass="error"/><br>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="validationDefault05">Kraj</label>
-                            <input type="text" class="form-control" name="country" id="validationDefault05" placeholder="Podaj nazwę Kraju" required>
+                            <label for="country">Kraj</label>
+                            <input type="text" class="form-control" name="country" id="country" placeholder="Podaj nazwę Kraju" required>
+                            <form:errors path="country" cssClass="error"/><br>
 
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="validationDefault06">województwo</label>
-                            <input type="text" class="form-control" name="voivodeship" id="validationDefault06" placeholder="Podaj nazwę województwa" required>
+                            <label for="postcode">Kod pocztowy</label>
+                            <input type="text" class="form-control" name="postcode" placeholder="Podaj kod pocztowy" id="postcode" required>
+                            <form:errors path="postcode" cssClass="error"/><br>
+
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
-                            <label for="validationDefault07">Miasto</label>
-                            <input type="text" class="form-control" name="City"  placeholder="Podaj nazwę miasta" id="validationDefault07"  required>
+                            <label for="city">Miasto</label>
+                            <input type="text" class="form-control" name="city"  placeholder="Podaj nazwę miasta" id="city"  required>
+                            <form:errors path="city" cssClass="error"/><br>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="validationDefault08">Kod pocztowy</label>
-                            <input type="text" class="form-control" name="postcode" placeholder="Podaj kod pocztowy" id="validationDefault08" required>
+                            <label for="voivodeship">województwo</label>
+                            <input type="text" class="form-control" name="voivodeship" id="voivodeship" placeholder="Podaj nazwę województwa" required>
+                            <form:errors path="voivodeship" cssClass="error"/><br>
                         </div>
                     </div>
+
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <legend class="col-form-label col-sm-4 pt-0  ">Forma płatności:</legend>
+                            <div class="col-sm-10">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="gridRadios1" value="Przelew tradycyjny" checked>
+                                    <label class="form-check-label" for="gridRadios1">
+                                        Przelew tradycyjny
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="gridRadios2" value="Przelewy24.pl">
+                                    <label class="form-check-label" for="gridRadios2">
+                                        Przelewy24.pl
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="gridRadios3" value="Płatność kartą" >
+                                    <label class="form-check-label" for="gridRadios3">
+                                        Płatność kartą
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
                     <div class="form-group">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                            <label class="form-check-label" for="invalidCheck2">
+                            <input class="form-check-input" type="checkbox" name="terms" value="true" id="terms" required>
+                            <form:errors path="terms" cssClass="error"/><br>
+                            <label class="form-check-label" for="terms">
                                 Zgadzam się z warunkami
                             </label>
                         </div>
                     </div>
-                </form>
-            </c:when>
-            <c:otherwise>
-        <form method="post" action="" id="buttonOrder">
-            <div class="form-row">
-                <div class="col-md-4 mb-3">
-                    <label for="validationDefault01">Email</label>
-                    <input type="text" class="form-control"  name="email" id="validationDefault09" value="${user.email}"  placeholder="Podaj Email" required/>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationDefault02">Imię</label>
-                    <input type="text" class="form-control" name="firstName" id="validationDefault10"  value="${user.firstName}" placeholder="Podaj imię" required/>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationDefault03">Nazwisko</label>
-                    <input type="text" class="form-control"  name="lastName" id="validationDefault11" placeholder="Podaj nazwisko" value="${user.lastName}"  required>
-                </div>
-            </div>
-            <sec:csrfInput/>
-        </form>
-            </c:otherwise>
-        </c:choose>
+
+                </form:form>
+
+<%--            <c:otherwise>--%>
+<%--        <form method="post" action="/cart/confirm" id="buttonOrder">--%>
+<%--            <div class="form-row">--%>
+<%--                <div class="col-md-4 mb-3">--%>
+<%--                    <label for="email">Email</label>--%>
+<%--                    <input type="text" class="form-control"  name="email" id="email" value="${user.email}"  placeholder="Podaj Email" required/>--%>
+<%--                </div>--%>
+<%--                <div class="col-md-4 mb-3">--%>
+<%--                    <label for="validationDefault02">Imię</label>--%>
+<%--                    <input type="text" class="form-control" name="firstName" id="firstName"  value="${user.firstName}" placeholder="Podaj imię" required/>--%>
+<%--                </div>--%>
+<%--                <div class="col-md-4 mb-3">--%>
+<%--                    <label for="validationDefault03">Nazwisko</label>--%>
+<%--                    <input type="text" class="form-control"  name="lastName" id="validationDefault11" placeholder="Podaj nazwisko" value="${user.lastName}"  required>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <sec:csrfInput/>--%>
+<%--        </form>--%>
+<%--            </c:otherwise>--%>
         <div class="col mb-2">
             <div class="row">
                 <div class="col-sm-12  col-md-6">
@@ -184,6 +222,10 @@
         </div>
     </div>
 </div>
+
+
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

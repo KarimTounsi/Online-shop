@@ -37,6 +37,10 @@ public class EditCategoryController {
         return "redirect:/admin/category/all";
     }
 
+    @ModelAttribute("categories")
+    public List<Category> getAllCategories() {
+        return categoryService.getAllSorted();
+    }
 
 
 }

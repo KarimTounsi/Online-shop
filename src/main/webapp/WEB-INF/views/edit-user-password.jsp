@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<jsp:include page="fragments/one-button-menu.jsp"/>
+<jsp:include page="fragments/main-menu.jsp"/>
 
 
 <div class="container registration">

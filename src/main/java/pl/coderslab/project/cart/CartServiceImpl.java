@@ -62,6 +62,22 @@ public class CartServiceImpl implements CartService {
 
 
     @Override
+    public void checkout() throws NotEnoughProductsInStockException {
+        Product product;
+        for (Map.Entry<Product, Integer> entry : products.entrySet()) {
+            product = productRepository.getOne(entry.getKey().getId());
+            if (product.getQuantity() < entry.getValue())
+                throw new NotEnoughProductsInStockException(product);
+            entry.getKey().setQuantity(product.getQuantity() - entry.getValue());
+        }
+        productRepository.saveAll(products.keySet());
+        productRepository.flush();
+        products.clear();
+    }
+
+
+
+    @Override
     public Map<Product, Integer> getProductsInCart() {
         return Collections.unmodifiableMap(products);
     }
@@ -75,4 +91,7 @@ public class CartServiceImpl implements CartService {
                 .reduce(BigDecimal::add)
                 .orElse(BigDecimal.ZERO);
     }
+
+
+
 }
