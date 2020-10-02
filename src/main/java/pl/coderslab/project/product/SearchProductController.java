@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.project.cart.CartService;
 import pl.coderslab.project.category.Category;
 import pl.coderslab.project.category.CategoryService;
 
@@ -18,14 +19,8 @@ public class SearchProductController {
 
     ProductService productService;
     CategoryService categoryService;
+    CartService cartService;
 
-    @PostMapping
-    public String searchProduct(String search, Model model) {
-
-        model.addAttribute("products", productService.findProductsByNameIsStartingWithName(search));
-
-        return "view-search-products";
-    }
 
 //    @PostMapping
 //    @ResponseBody
@@ -33,16 +28,43 @@ public class SearchProductController {
 //        return productService.findProductsByNameIsStartingWith(search).toString() ;
 //    }
 
-    @GetMapping("/{categoryId}")
-    public String searchProductByCategory(@PathVariable Long categoryId, Model model) {
-        model.addAttribute("products", productService.productsByCategory(categoryService.getById(categoryId)));
+    @PostMapping
+    public String viewProductsBySort(Model model , String search) {
+        model.addAttribute("products", productService.findProductsByNameIsStartingWithName(search));
+        model.addAttribute("search", search);
         return "view-search-products";
     }
+
+
+
+    @PostMapping
+    @RequestMapping("/{search}")
+    public String viewProductsBySort(Model model, @PathVariable String search , String type) {
+
+       if (type.equals("increase")) {
+            model.addAttribute("products", productService.getProductsByNameIsStartingWithOrderByPriceAsc(search));
+        } else if (type.equals("decrease")){
+            model.addAttribute("products", productService.getProductsByNameIsStartingWithOrderByPriceDesc(search));
+        } else if (type.equals("A-Z")){
+            model.addAttribute("products", productService.getProductsByNameIsStartingWithOrderByNameAsc(search));
+        }else if (type.equals("Z-A")){
+            model.addAttribute("products", productService.getProductsByNameIsStartingWithOrderByNameDesc(search));
+        }
+
+        return "view-search-products";
+    }
+
+
 
 
     @ModelAttribute("categories")
     public List<Category> getAllCategories() {
         return categoryService.getAllSorted();
+    }
+
+    @ModelAttribute("ProductsInCart")
+    public int ProductsInCart() {
+        return cartService.getAmountProductsInCart();
     }
 
 }

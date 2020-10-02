@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.coderslab.project.cart.CartService;
 import pl.coderslab.project.category.Category;
 import pl.coderslab.project.category.CategoryService;
 
@@ -19,6 +20,7 @@ public class OrdersUserController {
 
     OrderService orderService;
     CategoryService categoryService;
+    CartService cartService;
 
     @GetMapping
     public String viewAllOrders() {
@@ -36,5 +38,12 @@ public class OrdersUserController {
     public List<Category> getAllCategories() {
         return categoryService.getAllSorted();
     }
+
+
+    @ModelAttribute("ProductsInCart")
+    public int ProductsInCart() {
+        return cartService.getAmountProductsInCart();
+    }
+
 
 }

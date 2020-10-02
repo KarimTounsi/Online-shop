@@ -42,6 +42,8 @@ public class CartServiceImpl implements CartService {
             throw new NotEnoughProductsInStockException(product);}
     }
 
+
+
     @Override
     public void removeProduct(Product product) {
 
@@ -92,6 +94,11 @@ public class CartServiceImpl implements CartService {
                 .orElse(BigDecimal.ZERO);
     }
 
+    @Override
+    public int getAmountProductsInCart() {
+            return products.size();
+
+    }
 
 
 }

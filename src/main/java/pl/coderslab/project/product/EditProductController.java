@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.project.cart.CartService;
 import pl.coderslab.project.category.Category;
 import pl.coderslab.project.category.CategoryService;
 
@@ -17,6 +18,7 @@ public class EditProductController {
 
     ProductService productService;
     CategoryService categoryService;
+    CartService cartService;
 
     public EditProductController(ProductService productService, @Qualifier("categoryServiceImpl") CategoryService categoryService) {
         this.productService = productService;
@@ -44,6 +46,11 @@ public class EditProductController {
     @ModelAttribute("categories")
     public List<Category> getAllCategories() {
         return categoryService.getAllSorted();
+    }
+
+    @ModelAttribute("ProductsInCart")
+    public int ProductsInCart() {
+        return cartService.getAmountProductsInCart();
     }
 
 

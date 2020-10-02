@@ -30,8 +30,9 @@ public class CartController {
     }
 
 
+
     @PostMapping("/product/add/cart")
-    public String productAddToCart( Long id ) throws NotEnoughProductsInStockException {
+    public String AddProductInCart( Long id ) throws NotEnoughProductsInStockException {
            Product product = productService.getProductById(id);
            if (product.getQuantity()>1){
                cartService.addProduct(product);
@@ -56,6 +57,11 @@ public class CartController {
     @ModelAttribute("categories")
     public List<Category> getAllCategories() {
         return categoryService.getAllSorted();
+    }
+
+    @ModelAttribute("ProductsInCart")
+    public int ProductsInCart() {
+        return cartService.getAmountProductsInCart();
     }
 
 }

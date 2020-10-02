@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.coderslab.project.cart.CartService;
 import pl.coderslab.project.product.Product;
 import pl.coderslab.project.product.ProductRepository;
 
@@ -17,6 +18,7 @@ public class viewAllCategoryController {
 
 
     CategoryService categoryService;
+    CartService cartService;
 
     @GetMapping
     public String viewCategories() {
@@ -32,6 +34,9 @@ public class viewAllCategoryController {
     }
 
 
-
+    @ModelAttribute("ProductsInCart")
+    public int ProductsInCart() {
+        return cartService.getAmountProductsInCart();
+    }
 
 }

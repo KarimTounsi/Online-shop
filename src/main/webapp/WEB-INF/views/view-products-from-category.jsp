@@ -24,27 +24,27 @@
     <thead class="thead-dark">
     <tr>
         <th scope="col">#</th>
-        <th scope="col"><form class="form-inline my-2 my-lg-0" method="post" action="/search/${search}">
+        <th scope="col"><form class="form-inline my-2 my-lg-0" method="post" action="/products-from-category/${categoryId}">
             <button class="btn btn-outline-success btn-sm my-2 my-sm-0 mr-sm-2" name="type" value="A-Z" type="submit">Sortowanie A-Z</button>
             <sec:csrfInput/>
         </form></th>
-        <th scope="col"><form class="form-inline my-2 my-lg-0" method="post" action="/search/${search}">
+        <th scope="col"><form class="form-inline my-2 my-lg-0" method="post" action="/products-from-category/${categoryId}">
             <button class="btn btn-outline-success btn-sm my-2 my-sm-0 mr-sm-2" name="type" value="Z-A" type="submit">Sortowanie Z-A</button>
             <sec:csrfInput/>
         </form></th>
-        <th scope="col"><form class="form-inline my-2 my-lg-0" method="post" action="/search/${search}">
+        <th scope="col"><form class="form-inline my-2 my-lg-0" method="post" action="/products-from-category/${categoryId}">
             <button class="btn btn-outline-success btn-sm my-2 my-sm-0 mr-sm-2" name="type" value="increase" type="submit">Cena od najniższej</button>
             <sec:csrfInput/>
         </form></th>
-        <th scope="col"><form class="form-inline my-2 my-lg-0" method="post" action="/search/${search}">
+        <th scope="col"><form class="form-inline my-2 my-lg-0" method="post" action="/products-from-category/${categoryId}">
             <button class="btn btn-outline-success btn-sm my-2 my-sm-0 mr-sm-2" name="type" value="decrease" type="submit">Cena od najwyższej</button>
             <sec:csrfInput/>
         </form></th>
-        <sec:authorize access="hasRole('ROLE_ADMIN')">
-            <th></th>
-            <th></th>
-            <th></th>
-        </sec:authorize>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+<th></th>
+<th></th>
+<th></th>
+</sec:authorize>
     </tr>
     <tr>
         <th scope="col">#</th>

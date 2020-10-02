@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.project.cart.CartService;
 import pl.coderslab.project.product.Product;
 import pl.coderslab.project.product.ProductService;
 
@@ -18,6 +19,7 @@ import java.util.List;
 public class EditCategoryController {
 
     CategoryService categoryService;
+    CartService cartService;
 
     @GetMapping
     public String editCategory(Model model, @RequestParam Long id) {
@@ -40,6 +42,11 @@ public class EditCategoryController {
     @ModelAttribute("categories")
     public List<Category> getAllCategories() {
         return categoryService.getAllSorted();
+    }
+
+    @ModelAttribute("ProductsInCart")
+    public int ProductsInCart() {
+        return cartService.getAmountProductsInCart();
     }
 
 

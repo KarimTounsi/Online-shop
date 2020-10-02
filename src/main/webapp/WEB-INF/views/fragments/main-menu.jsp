@@ -26,7 +26,7 @@
                    aria-expanded="false">Kategorie</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <c:forEach varStatus="theCount" items="${categories}" var="category">
-                        <a class="dropdown-item" href="/search/${category.id}"> ${category.name} </a>
+                        <a class="dropdown-item" href="/products-from-category/${category.id}"> ${category.name} </a>
                     </c:forEach>
                 </div>
                 <%--                <div class="dropdown-divider"></div>--%>
@@ -41,8 +41,17 @@
         <sec:authorize access="isAuthenticated()">
         <ul class="navbar-nav ">
             <li class="nav-item ">
-                <a class="nav-link" href="/cart">Koszyk</a>
+                <a class="nav-link" href="/cart">
+
+                    <c:choose>
+                    <c:when test="${ProductsInCart > 0}">
+                    <span class="badge badge-light">${ProductsInCart}</span>
+                    </c:when>
+                    </c:choose>
+                    Koszyk</a>
+
             </li>
+
             <li class="nav-item ">
                 <a class="nav-link" href="/user/orders">Zamówienia</a>
             </li>

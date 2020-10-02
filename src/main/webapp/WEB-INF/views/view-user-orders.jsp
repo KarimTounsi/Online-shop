@@ -74,7 +74,7 @@
                         <p class="text-success">Zrealizowane</p>
                     </c:when>
                     <c:otherwise>
-                        <p class="text-danger">Nie zrealizowane</p>
+                        <p class="text-secondary">Oczekuje</p>
                     </c:otherwise>
                 </c:choose>
             </td>

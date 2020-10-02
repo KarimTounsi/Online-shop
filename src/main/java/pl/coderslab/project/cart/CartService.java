@@ -21,4 +21,6 @@ public interface CartService {
     void checkout() throws NotEnoughProductsInStockException;
 
     BigDecimal getTotal();
+
+    int getAmountProductsInCart();
 }
