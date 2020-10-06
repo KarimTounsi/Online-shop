@@ -1,5 +1,6 @@
 package pl.coderslab.project.cart;
 
+import freemarker.template.TemplateException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +18,9 @@ import pl.coderslab.project.product.Product;
 import pl.coderslab.project.product.ProductService;
 import pl.coderslab.project.user.UserService;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.security.Principal;
 
@@ -43,7 +46,7 @@ public class CartConfirmController {
     }
 
     @PostMapping("/cart/confirm")
-    public String cartConfirm(@Valid Address address, BindingResult bindingResult, Principal principal, BigDecimal transport,BigDecimal sum, String paymentMethod ) {
+    public String cartConfirm(@Valid Address address, BindingResult bindingResult, Principal principal, BigDecimal transport,BigDecimal sum, String paymentMethod ) throws MessagingException, IOException, TemplateException {
         if (bindingResult.hasErrors()) {
             return "cart-confirm";
         }
@@ -64,13 +67,16 @@ public class CartConfirmController {
         order.setPaymentMethod(paymentMethod);
         order.setRealized(false);
         orderService.saveOrder(order);
+        cartService.sendMail(order);
         return "redirect:/cart/confirm/checkout";
     }
 
     @GetMapping("/cart/confirm/checkout")
     public String cartConfirmCheckout( ) throws NotEnoughProductsInStockException {
 
+
         cartService.checkout();
+
 
         return "redirect:/";
     }

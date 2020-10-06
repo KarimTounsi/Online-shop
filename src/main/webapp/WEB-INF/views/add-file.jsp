@@ -14,45 +14,22 @@
 <div class="container add-product">
     <div class="row" style="margin-top: 40px">
         <div class="col-1"></div>
-        <div class="col-10" style="padding-bottom: 20px"><h2>Nowy produkt</h2></div>
+        <div class="col-10" style="padding-bottom: 20px"><h2>Nowe zdjęcie</h2></div>
         <div class="col-1"></div>
     </div>
     <div class="row">
         <div class="col-1"></div>
         <div class="col-6">
-            <form:form method="post" action="/admin/product/add" modelAttribute="product">
+            <form:form method="post" action="/admin/image/add" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="name">Nazwa Produktu</label>
-                    <input type="text" required name="name" id="name" class="form-control"
-                           placeholder="Podaj nazwę Produktu"/>
-                    <form:errors path="name" cssClass="error"/><br>
+                    <label for="file">Dodaj plik:</label>
+                    <input type="file" required name="file" id="file" accept="application/pdf,image/*" class="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label for="description">Opis produktu</label>
-                    <input type="text" required name="description" id="description" class="form-control"
-                           placeholder="Wpisz opis produktu"/>
-                    <form:errors path="description" cssClass="error"/><br>
+                    <label for="fileName">Nazwa do zapisania: </label>
+                    <input type="text" required name="fileName" id="fileName" class="form-control"
+                           placeholder="Wpisz nazwę pliku"/>
                 </div>
-                <div class="form-group">
-                    <label for="quantity">Ilość produktu</label>
-                    <input type="text" required name="quantity" id="quantity" class="form-control"
-                           placeholder="Wpisz ilość"/>
-                    <form:errors path="quantity" cssClass="error"/><br>
-                </div>
-                <div class="form-group">
-                    <label for="price">Cena</label>
-                    <input type="text" required name="price" id="price" class="form-control"
-                           placeholder="Podaj cenę produktu"/>
-                    <form:errors path="price" cssClass="error"/><br>
-                </div>
-                Kategoria: <form:select path="category.id">
-                <form:option value="0" label="wybierz kategorie"/>
-                <form:options items="${categories}" itemValue="id" itemLabel="name"/>
-            </form:select>
-                zdjęcia: <form:select path="images" multiple="true">
-                <form:option value="0" label="wybierz zdjęcia"/>
-                <form:options items="${images}" itemValue="id" itemLabel="ImageName"/>
-            </form:select>
                 <button class="btn btn-primary" type="submit">Zapisz</button>
                 <button class="btn btn-secondary" type="reset">Wyczyść dane</button>
                 <sec:csrfInput/>

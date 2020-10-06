@@ -68,6 +68,8 @@
                     <a class="dropdown-item" href="/admin/orders/all">Zamówienia użytkowników</a>
                     <a class="dropdown-item" href="/admin/category/all">Lista kategorii</a>
                     <a class="dropdown-item" href="/admin/category/add">Dodaj kategorie</a>
+                    <a class="dropdown-item" href="/admin/image/image-without-relations">Lista zdjęć <br> nie dodanych do produktu</a>
+                    <a class="dropdown-item" href="/admin/image/add">Dodaj zdjęcie</a>
                     <a class="dropdown-item" href="/admin/product/add">Dodaj produkt</a>
                 </div>
             </li>

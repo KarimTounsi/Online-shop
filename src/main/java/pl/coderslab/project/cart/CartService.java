@@ -2,9 +2,13 @@ package pl.coderslab.project.cart;
 
 
 
+import freemarker.template.TemplateException;
 import pl.coderslab.project.cart.exception.NotEnoughProductsInStockException;
+import pl.coderslab.project.order.Order;
 import pl.coderslab.project.product.Product;
 
+import javax.mail.MessagingException;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Map;
 
@@ -23,4 +27,6 @@ public interface CartService {
     BigDecimal getTotal();
 
     int getAmountProductsInCart();
+
+    public void sendMail(Order order) throws MessagingException, IOException, TemplateException ;
 }

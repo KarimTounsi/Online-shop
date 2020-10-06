@@ -8,4 +8,8 @@ public interface UserService {
 
     void updateUser(User user);
 
+
+//   RegisterUserResponse RegisterUser(RegisterUserRequest request);
+
+
 }

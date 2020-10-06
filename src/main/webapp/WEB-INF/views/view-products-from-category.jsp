@@ -18,28 +18,44 @@
 </head>
 <body>
 <jsp:include page="fragments/main-menu.jsp"/>
-
-
 <table class="table view-all-products">
     <thead class="thead-dark">
     <tr>
-        <th scope="col">#</th>
-        <th scope="col"><form class="form-inline my-2 my-lg-0" method="post" action="/products-from-category/${categoryId}">
-            <button class="btn btn-outline-success btn-sm my-2 my-sm-0 mr-sm-2" name="type" value="A-Z" type="submit">Sortowanie A-Z</button>
-            <sec:csrfInput/>
-        </form></th>
-        <th scope="col"><form class="form-inline my-2 my-lg-0" method="post" action="/products-from-category/${categoryId}">
-            <button class="btn btn-outline-success btn-sm my-2 my-sm-0 mr-sm-2" name="type" value="Z-A" type="submit">Sortowanie Z-A</button>
-            <sec:csrfInput/>
-        </form></th>
-        <th scope="col"><form class="form-inline my-2 my-lg-0" method="post" action="/products-from-category/${categoryId}">
-            <button class="btn btn-outline-success btn-sm my-2 my-sm-0 mr-sm-2" name="type" value="increase" type="submit">Cena od najniższej</button>
-            <sec:csrfInput/>
-        </form></th>
-        <th scope="col"><form class="form-inline my-2 my-lg-0" method="post" action="/products-from-category/${categoryId}">
-            <button class="btn btn-outline-success btn-sm my-2 my-sm-0 mr-sm-2" name="type" value="decrease" type="submit">Cena od najwyższej</button>
-            <sec:csrfInput/>
-        </form></th>
+        <th scope="col"></th>
+        <th scope="col">
+            <div class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sortowanie
+                </button>
+                <div class="dropdown-menu">
+                    <form class="form-inline my-2 my-lg-0 pl-2" method="post" action="/products-from-category/${categoryId}">
+                        <button class="btn btn-outline-success btn-sm my-2 my-sm-0 mr-sm-2" name="type" value="A-Z" type="submit">Sortowanie A-Z</button>
+                        <sec:csrfInput/>
+                    </form><form class="form-inline my-2 my-lg-0 pt-2 pl-2" method="post" action="/products-from-category/${categoryId}">
+                    <button class="btn btn-outline-success btn-sm my-2 my-sm-0 mr-sm-2" name="type" value="Z-A" type="submit">Sortowanie Z-A</button>
+                    <sec:csrfInput/>
+                </form>
+                </div>
+            </div>
+          </th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col">
+            <div class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sortowanie
+                </button>
+                <div class="dropdown-menu">
+                    <form class="form-inline my-2 my-lg-0 pl-2" method="post" action="/products-from-category/${categoryId}">
+                        <button class="btn btn-outline-success btn-sm my-2 my-sm-0 mr-sm-2" name="type" value="increase" type="submit">Cena od najniższej</button>
+                        <sec:csrfInput/>
+                    </form><form class="form-inline my-2 my-lg-0 pt-2 pl-2" method="post" action="/products-from-category/${categoryId}">
+                    <button class="btn btn-outline-success btn-sm my-2 my-sm-0 mr-sm-2" name="type" value="decrease" type="submit">Cena od najwyższej</button>
+                    <sec:csrfInput/>
+                </form>
+                </div>
+            </div>
+            </th>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 <th></th>
 <th></th>
@@ -47,8 +63,8 @@
 </sec:authorize>
     </tr>
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nazwa</th>
+        <th scope="col">Pozycja</th>
+        <th scope="col">Nazwa produktu</th>
         <th scope="col">Opis</th>
         <th scope="col">Status</th>
         <th scope="col">Cena</th>

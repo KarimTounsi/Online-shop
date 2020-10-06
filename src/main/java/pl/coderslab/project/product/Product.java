@@ -5,13 +5,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+
 import pl.coderslab.project.category.Category;
+import pl.coderslab.project.dbImage.DbImage;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 import java.util.Objects;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "products")
@@ -43,6 +47,12 @@ public class Product {
 
     @ManyToOne
     Category category;
+
+    @OneToMany
+    @Column(nullable = true)
+    @JoinTable(name = "product_images")
+    protected Set<DbImage> images;
+
 
     @Override
     public boolean equals(Object o) {

@@ -1,6 +1,15 @@
 package pl.coderslab.project.cart;
 
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import pl.coderslab.project.cart.exception.NotEnoughProductsInStockException;
+import pl.coderslab.project.order.Order;
 import pl.coderslab.project.product.Product;
 import pl.coderslab.project.product.ProductRepository;
 import lombok.AllArgsConstructor;
@@ -11,7 +20,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,17 +39,17 @@ public class CartServiceImpl implements CartService {
 
     private Map<Product, Integer> products = new HashMap<>();
 
+    @Autowired(required = false)
+    private JavaMailSender mailSender;
 
 
     @Override
     public void addProduct(Product product) throws NotEnoughProductsInStockException {
 
         if (products.containsKey(product)) {
-
             products.replace(product, products.get(product) + 1);
         } else {
             products.put(product, 1);
-
         }
         if (product.getQuantity() < products.get(product)){
             throw new NotEnoughProductsInStockException(product);}
@@ -100,5 +113,27 @@ public class CartServiceImpl implements CartService {
 
     }
 
+//    @Scheduled(cron = "0 * * * * *")
+    public void sendMail(Order order) throws MessagingException, IOException, TemplateException {
+        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
+        freeMarkerConfigurer.setTemplateLoaderPath("classpath:templates/mail/templates");
+        Configuration config = freeMarkerConfigurer.createConfiguration();
+        Template mailTemplate = config.getTemplate("test-mail.ftlh");
+        Map<String, Object> model = new HashMap<>();
+        model.put("username", "joesmith");
+        model.put("today", LocalDate.now());
+//        model.put("orders", List.of("Bakłażan", "Kalarepa", "Wężymord"));
+        String mailBody = FreeMarkerTemplateUtils.processTemplateIntoString(mailTemplate, model);
+
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+        messageHelper.setFrom("karim.tounsi100@gmail.com");
+        messageHelper.setSubject("Subject");
+        messageHelper.setBcc(new String[]{"kartoun@interia.pl"});
+        messageHelper.setText(mailBody, true);
+        mailSender.send(mimeMessage);
+
+
+    }
 
 }
