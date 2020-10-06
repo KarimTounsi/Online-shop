@@ -39,8 +39,8 @@ public class CartServiceImpl implements CartService {
 
     private Map<Product, Integer> products = new HashMap<>();
 
-    @Autowired(required = false)
-    private JavaMailSender mailSender;
+//    @Autowired(required = false)
+//    private JavaMailSender mailSender;
 
 
     @Override
@@ -114,26 +114,26 @@ public class CartServiceImpl implements CartService {
     }
 
 //    @Scheduled(cron = "0 * * * * *")
-    public void sendMail(Order order) throws MessagingException, IOException, TemplateException {
-        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
-        freeMarkerConfigurer.setTemplateLoaderPath("classpath:templates/mail/templates");
-        Configuration config = freeMarkerConfigurer.createConfiguration();
-        Template mailTemplate = config.getTemplate("test-mail.ftlh");
-        Map<String, Object> model = new HashMap<>();
-        model.put("username", "joesmith");
-        model.put("today", LocalDate.now());
-//        model.put("orders", List.of("Bakłażan", "Kalarepa", "Wężymord"));
-        String mailBody = FreeMarkerTemplateUtils.processTemplateIntoString(mailTemplate, model);
-
-        MimeMessage mimeMessage = mailSender.createMimeMessage();
-        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
-        messageHelper.setFrom("karim.tounsi100@gmail.com");
-        messageHelper.setSubject("Subject");
-        messageHelper.setBcc(new String[]{"kartoun@interia.pl"});
-        messageHelper.setText(mailBody, true);
-        mailSender.send(mimeMessage);
-
-
-    }
+//    public void sendMail(Order order) throws MessagingException, IOException, TemplateException {
+//        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
+//        freeMarkerConfigurer.setTemplateLoaderPath("classpath:templates/mail/templates");
+//        Configuration config = freeMarkerConfigurer.createConfiguration();
+//        Template mailTemplate = config.getTemplate("test-mail.ftlh");
+//        Map<String, Object> model = new HashMap<>();
+//        model.put("username", "joesmith");
+//        model.put("today", LocalDate.now());
+////        model.put("orders", List.of("Bakłażan", "Kalarepa", "Wężymord"));
+//        String mailBody = FreeMarkerTemplateUtils.processTemplateIntoString(mailTemplate, model);
+//
+//        MimeMessage mimeMessage = mailSender.createMimeMessage();
+//        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+//        messageHelper.setFrom("karim.tounsi100@gmail.com");
+//        messageHelper.setSubject("Subject");
+//        messageHelper.setBcc(new String[]{"kartoun@interia.pl"});
+//        messageHelper.setText(mailBody, true);
+//        mailSender.send(mimeMessage);
+//
+//
+//    }
 
 }
