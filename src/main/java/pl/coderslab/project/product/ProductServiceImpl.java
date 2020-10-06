@@ -40,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
         if (productRepository.findById(id).isPresent()) {
            Product product = productRepository.findById(id).get();
             Hibernate.initialize(product.getImages());
-            return product;
+            return product ;
         } else {
             return null;
         }
