@@ -1,6 +1,7 @@
 package pl.coderslab.project.product;
 
 import lombok.AllArgsConstructor;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import pl.coderslab.project.category.Category;
 
@@ -37,7 +38,9 @@ public class ProductServiceImpl implements ProductService {
     public Product getProductById(Long id) {
 
         if (productRepository.findById(id).isPresent()) {
-            return productRepository.findById(id).get();
+           Product product = productRepository.findById(id).get();
+            Hibernate.initialize(product.getImages());
+            return product;
         } else {
             return null;
         }

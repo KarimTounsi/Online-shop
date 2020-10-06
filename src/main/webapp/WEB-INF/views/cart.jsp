@@ -47,7 +47,11 @@
                     <c:forEach var="item"
                                items="${cart}">
                         <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff"/></td>
+                            <td>
+                                <c:forEach varStatus="theCount" items="${item.key.images}" var="image">
+                                    <img  src="/image/view/${image.id}" width="50" height="50"/>
+                                </c:forEach>
+                            </td>
                             <td>${item.key.name}</td>
                             <td><c:choose>
                                 <c:when test="${item.key.quantity > 1}">

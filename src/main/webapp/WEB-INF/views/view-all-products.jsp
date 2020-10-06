@@ -110,11 +110,11 @@
         <tr>
             <th scope="row">${theCount.index +1}</th>
             <td>
-
                 <c:forEach varStatus="theCount" items="${product.images}" var="image">
-                <img  src="/image/view/${image.id}" width="70" height="70"/>
-            </c:forEach>
 
+                <img  src="/image/view/${image.id}" width="70" height="70"/>
+
+            </c:forEach>
                 <a href="/product/${product.id}"  style="color: black" class="font-weight-bold">${product.name}</a></td>
             <td>${product.description}</td>
             <td>
