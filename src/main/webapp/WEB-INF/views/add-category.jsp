@@ -26,6 +26,8 @@
                     <input type="text" required name="name" id="name" class="form-control"
                            placeholder="Podaj nazwę kategorii"/>
                     <form:errors path="name" cssClass="error"/><br>
+                    <input type="text" required name="status" id="status" class="form-control"
+                         value="true" hidden/>
                 </div>
                 <button class="btn btn-primary" type="submit">Zapisz</button>
                 <button class="btn btn-secondary" type="reset">Wyczyść dane</button>

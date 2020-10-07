@@ -17,12 +17,17 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findProductsByNameIsStartingWithName(String name) {
-        return productRepository.findProductsByNameIsStartingWith(name);
+        return productRepository.findProductsByStatusTrueAndNameIsStartingWith(name);
     }
 
     @Override
     public List<Product> getAll() {
         return productRepository.findAll();
+    }
+
+    @Override
+    public List<Product> getAllByStatus(boolean status) {
+        return productRepository.findAllByStatus(status);
     }
 
     @Override
@@ -32,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> productsByCategory(Category category) {
-        return productRepository.findProductsByCategory(category);
+        return productRepository.findProductsByStatusTrueAndCategory(category);
     }
 
     @Override
@@ -59,73 +64,78 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public void saveAllProducts(List<Product> list) {
+        productRepository.saveAll(list);
+    }
+
+    @Override
     public Optional<Product> findById(Long id) {
         return productRepository.findById(id);
     }
 
     @Override
     public List<Product> getAllByOrderByPriceAsc() {
-        return productRepository.findAllByOrderByPriceAsc();
+        return productRepository.findAllByStatusTrueOrderByPriceAsc();
     }
 
     @Override
     public List<Product> getAllByOrderByPriceDesc() {
-        return productRepository.findAllByOrderByPriceDesc();
+        return productRepository.findAllByStatusTrueOrderByPriceDesc();
     }
 
     @Override
     public List<Product> getAllByOrderByNameAsc() {
-        return productRepository.findAllByOrderByNameAsc();
+        return productRepository.findAllByStatusTrueOrderByNameAsc();
     }
 
     @Override
     public List<Product> getAllByOrderByNameDsc() {
-        return productRepository.findAllByOrderByNameDesc();
+        return productRepository.findAllByStatusTrueOrderByNameDesc();
     }
 
     @Override
     public List<Product> getProductsByNameIsStartingWithOrderByPriceAsc(String name) {
-        return productRepository.findProductsByNameIsStartingWithOrderByPriceAsc(name);
+        return productRepository.findProductsByStatusTrueAndNameIsStartingWithOrderByPriceAsc(name);
     }
 
     @Override
     public List<Product> getProductsByNameIsStartingWithOrderByPriceDesc(String name) {
-        return productRepository.findProductsByNameIsStartingWithOrderByPriceDesc(name);
+        return productRepository.findProductsByStatusTrueAndNameIsStartingWithOrderByPriceDesc(name);
     }
 
     @Override
     public List<Product> getProductsByNameIsStartingWithOrderByNameAsc(String name) {
-        return productRepository.findProductsByNameIsStartingWithOrderByNameAsc(name);
+        return productRepository.findProductsByStatusTrueAndNameIsStartingWithOrderByNameAsc(name);
     }
 
     @Override
     public List<Product> getProductsByNameIsStartingWithOrderByNameDesc(String name) {
-        return productRepository.findProductsByNameIsStartingWithOrderByNameDesc(name);
+        return productRepository.findProductsByStatusTrueAndNameIsStartingWithOrderByNameDesc(name);
     }
 
     @Override
     public List<Product> getProductsByCategoryOrderByPriceAsc(Category category) {
-        return productRepository.findProductsByCategoryOrderByPriceAsc(category);
+        return productRepository.findProductsByStatusTrueAndCategoryOrderByPriceAsc(category);
     }
 
     @Override
     public List<Product> getProductsByCategoryOrderByPriceDesc(Category category) {
-        return productRepository.findProductsByCategoryOrderByPriceDesc(category);
+        return productRepository.findProductsByStatusTrueAndCategoryOrderByPriceDesc(category);
     }
 
     @Override
     public List<Product> getProductsByCategoryOrderByNameAsc(Category category) {
-        return productRepository.findProductsByCategoryOrderByNameAsc(category);
+        return productRepository.findProductsByStatusTrueAndCategoryOrderByNameAsc(category);
     }
 
     @Override
     public List<Product> getProductsByCategoryOrderByNameDesc(Category category) {
-        return productRepository.findProductsByCategoryOrderByNameDesc(category);
+        return productRepository.findProductsByStatusTrueAndCategoryOrderByNameDesc(category);
     }
 
     @Override
     public List<Product> getLastSixProducts() {
-        return productRepository.findAllByOrderByIdDesc().stream().limit(6).collect(Collectors.toList());
+        return productRepository.findAllByStatusTrueOrderByIdDesc().stream().limit(6).collect(Collectors.toList());
     }
 
 

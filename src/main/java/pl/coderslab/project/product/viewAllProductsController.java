@@ -25,7 +25,7 @@ ProductService productService;
 
     @ModelAttribute("products")
     public List<Product> getAll() {
-        return productService.getAll();
+        return productService.getAllByStatus(true);
     }
 
 

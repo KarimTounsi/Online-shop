@@ -5,6 +5,7 @@ import java.util.List;
 public interface CategoryService {
 
  void saveCategory(Category category);
+ void saveCategories(List <Category> list);
 
  List<Category> getAll();
 
@@ -15,6 +16,8 @@ public interface CategoryService {
  void deleteCategoryById(Long id);
 
  void deleteAllCategories();
+
+ List<Category> getAllByStatus(boolean status);
 
 
 }

@@ -19,14 +19,19 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public void saveCategories(List<Category> list) {
+categoryRepository.saveAll(list);
+    }
+
+    @Override
     public List<Category> getAll() {
-        return categoryRepository.findAll();
+        return categoryRepository.findAllByStatusTrue();
     }
 
 
     @Override
     public List<Category> getAllSorted() {
-        return categoryRepository.findAll().stream().sorted(Comparator.comparing(Category::getId)).
+        return categoryRepository.findAllByStatusTrue().stream().sorted(Comparator.comparing(Category::getId)).
                 collect(Collectors.toList());
     }
 
@@ -47,6 +52,11 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void deleteAllCategories() {
         categoryRepository.deleteAll();
+    }
+
+    @Override
+    public List<Category> getAllByStatus(boolean status) {
+        return categoryRepository.findAllByStatus(status);
     }
 
 

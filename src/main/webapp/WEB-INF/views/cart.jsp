@@ -141,12 +141,20 @@
                         <sec:csrfInput/>
                     </form>
                 </div>
-                <div class="col-sm-12 col-md-6 text-right">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase" form="buttonClick">Potwierdź
-                    </button>
-
-
-                </div>
+                <c:choose>
+                <c:when test="${ProductsInCart > 0}">
+                    <div class="col-sm-12 col-md-6 text-right">
+                        <button class="btn btn-lg btn-block btn-success text-uppercase" form="buttonClick">Potwierdź
+                        </button>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="col-sm-12 col-md-6 text-right">
+                        <button class="btn btn-lg btn-block btn-success text-uppercase" form="buttonClick" disabled>Potwierdź
+                        </button>
+                    </div>
+                </c:otherwise>
+            </c:choose>
             </div>
         </div>
     </div>

@@ -26,5 +26,7 @@ public class Category {
     @Length(min = 3, message = "*Name must have at least 3 characters")
     private String name;
 
+    private boolean status;
+
 
 }

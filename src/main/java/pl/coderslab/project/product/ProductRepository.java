@@ -9,40 +9,40 @@ import java.util.*;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
 
-    List<Product> findProductsByNameIsStartingWith(String name);
+    List<Product> findProductsByStatusTrueAndNameIsStartingWith(String name);
 
-    List<Product> findProductsByNameIsStartingWithOrderByPriceAsc(String name);
+    List<Product> findProductsByStatusTrueAndNameIsStartingWithOrderByPriceAsc(String name);
 
-    List<Product> findProductsByNameIsStartingWithOrderByPriceDesc(String name);
+    List<Product> findProductsByStatusTrueAndNameIsStartingWithOrderByPriceDesc(String name);
 
-    List<Product> findProductsByNameIsStartingWithOrderByNameAsc(String name);
+    List<Product> findProductsByStatusTrueAndNameIsStartingWithOrderByNameAsc(String name);
 
-    List<Product> findProductsByNameIsStartingWithOrderByNameDesc(String name);
-
-
-    List<Product> findProductsByCategoryOrderByPriceAsc(Category category);
-
-    List<Product> findProductsByCategoryOrderByPriceDesc(Category category);
-
-    List<Product> findProductsByCategoryOrderByNameAsc(Category category);
-
-    List<Product> findProductsByCategoryOrderByNameDesc(Category category);
+    List<Product> findProductsByStatusTrueAndNameIsStartingWithOrderByNameDesc(String name);
 
 
+    List<Product> findProductsByStatusTrueAndCategoryOrderByPriceAsc(Category category);
 
-    List <Product> findProductsByCategory(Category category);
+    List<Product> findProductsByStatusTrueAndCategoryOrderByPriceDesc(Category category);
 
+    List<Product> findProductsByStatusTrueAndCategoryOrderByNameAsc(Category category);
 
-    List <Product> findAllByOrderByPriceAsc();
-
-    List <Product> findAllByOrderByPriceDesc();
-
-    List <Product> findAllByOrderByNameAsc();
-
-    List <Product> findAllByOrderByNameDesc();
-
-    List <Product> findAllByOrderByIdDesc();
+    List<Product> findProductsByStatusTrueAndCategoryOrderByNameDesc(Category category);
 
 
+
+    List <Product> findProductsByStatusTrueAndCategory(Category category);
+
+
+    List <Product> findAllByStatusTrueOrderByPriceAsc();
+
+    List <Product> findAllByStatusTrueOrderByPriceDesc();
+
+    List <Product> findAllByStatusTrueOrderByNameAsc();
+
+    List <Product> findAllByStatusTrueOrderByNameDesc();
+
+    List <Product> findAllByStatusTrueOrderByIdDesc();
+
+    List <Product> findAllByStatus(boolean status);
 
 }

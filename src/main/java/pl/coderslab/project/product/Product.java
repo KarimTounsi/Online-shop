@@ -30,7 +30,7 @@ public class Product {
     @Column(name = "product_id")
     private Long id;
 
-    @Column(name = "name", nullable = false, unique = true)
+    @Column(name = "name", nullable = false)
     @Length(min = 3, message = "*Name must have at least 3 characters")
     private String name;
 
@@ -52,6 +52,8 @@ public class Product {
     @Column(nullable = true)
     @JoinTable(name = "product_images")
     protected Set<DbImage> images;
+
+    private boolean status;
 
 
     @Override

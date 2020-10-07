@@ -50,6 +50,14 @@
                 <form:option value="0" label="wybierz kategorie"/>
                 <form:options items="${categories}" itemValue="id" itemLabel="name"/>
             </form:select>
+                zdjęcia: <form:select path="images" multiple="true">
+                <form:option value="0" label="wybierz zdjęcia"/>
+                <form:options items="${images}" itemValue="id" itemLabel="ImageName"/>
+            </form:select>
+                Status: <form:select path="status">
+                <form:option value="true" label="true"/>
+                <form:option value="false" label="false"/>
+            </form:select>
                 <button class="btn btn-primary" type="submit">Zapisz</button>
                 <button class="btn btn-secondary" type="reset">Wyczyść dane</button>
                 <sec:csrfInput/>

@@ -12,6 +12,7 @@ public interface ProductService {
    List <Product> findProductsByNameIsStartingWithName(String name);
 
    List <Product> getAll();
+   List <Product> getAllByStatus(boolean status);
 
    void saveProduct(Product product);
 
@@ -22,6 +23,8 @@ public interface ProductService {
    void deleteProductById(Long id);
 
    void deleteAllProducts();
+
+   void saveAllProducts(  List<Product> list);
 
    Optional<Product> findById(Long id);
 

@@ -27,6 +27,10 @@
                     <input type="text" required name="name" id="name" value="${category.name}" class="form-control"
                            placeholder="Podaj nazwę Produktu"/>
                     <form:errors path="name" cssClass="error"/><br>
+                    Status: <form:select path="status">
+                    <form:option value="true" label="true"/>
+                    <form:option value="false" label="false"/>
+                </form:select>
                 </div>
                 <button class="btn btn-primary" type="submit">Zapisz</button>
                 <button class="btn btn-secondary" type="reset">Wyczyść dane</button>

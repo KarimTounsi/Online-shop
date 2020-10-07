@@ -53,6 +53,7 @@
                 <form:option value="0" label="wybierz zdjęcia"/>
                 <form:options items="${images}" itemValue="id" itemLabel="ImageName"/>
             </form:select>
+                <input type="text" required name="status" id="status" value="true" hidden class="form-control"/>
                 <button class="btn btn-primary" type="submit">Zapisz</button>
                 <button class="btn btn-secondary" type="reset">Wyczyść dane</button>
                 <sec:csrfInput/>

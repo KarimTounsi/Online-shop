@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.project.cart.CartService;
 import pl.coderslab.project.category.Category;
 import pl.coderslab.project.category.CategoryService;
+import pl.coderslab.project.dbImage.DbImage;
+import pl.coderslab.project.dbImage.DbImageRepository;
+import pl.coderslab.project.dbImage.DbImageService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -21,6 +24,7 @@ public class EditProductController {
     ProductService productService;
     CategoryService categoryService;
     CartService cartService;
+ DbImageService dbImageService;
 
 
     @GetMapping
@@ -40,6 +44,10 @@ public class EditProductController {
     }
 
 
+    @ModelAttribute("images")
+    public List<DbImage>  getAllImagesWithProductRelations() {
+        return dbImageService.getAllDbFileWithProductRelations();
+    }
 
     @ModelAttribute("categories")
     public List<Category> getAllCategories() {

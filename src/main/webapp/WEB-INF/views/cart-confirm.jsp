@@ -164,18 +164,18 @@
                                         Przelew tradycyjny
                                     </label>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="paymentMethod" id="gridRadios2" value="Przelewy24.pl">
-                                    <label class="form-check-label" for="gridRadios2">
-                                        Przelewy24.pl
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="paymentMethod" id="gridRadios3" value="Płatność kartą" >
-                                    <label class="form-check-label" for="gridRadios3">
-                                        Płatność kartą
-                                    </label>
-                                </div>
+<%--                                <div class="form-check form-check-inline">--%>
+<%--                                    <input class="form-check-input" type="radio" name="paymentMethod" id="gridRadios2" value="Przelewy24.pl">--%>
+<%--                                    <label class="form-check-label" for="gridRadios2">--%>
+<%--                                        Przelewy24.pl--%>
+<%--                                    </label>--%>
+<%--                                </div>--%>
+<%--                                <div class="form-check form-check-inline">--%>
+<%--                                    <input class="form-check-input" type="radio" name="paymentMethod" id="gridRadios3" value="Płatność kartą" >--%>
+<%--                                    <label class="form-check-label" for="gridRadios3">--%>
+<%--                                        Płatność kartą--%>
+<%--                                    </label>--%>
+<%--                                </div>--%>
                             </div>
                         </div>
                     </fieldset>
