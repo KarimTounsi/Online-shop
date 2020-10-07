@@ -7,6 +7,7 @@ import pl.coderslab.project.category.Category;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
@@ -120,6 +121,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getProductsByCategoryOrderByNameDesc(Category category) {
         return productRepository.findProductsByCategoryOrderByNameDesc(category);
+    }
+
+    @Override
+    public List<Product> getLastSixProducts() {
+        return productRepository.findAllByOrderByIdDesc().stream().limit(6).collect(Collectors.toList());
     }
 
 

@@ -7,9 +7,10 @@
 <body>
 email
 
-${username}
 
-${today}
+<#list products?values as val>
+
+</#list>
 
 </body>
 </html>

@@ -23,10 +23,12 @@ import org.springframework.web.context.WebApplicationContext;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -39,8 +41,8 @@ public class CartServiceImpl implements CartService {
 
     private Map<Product, Integer> products = new HashMap<>();
 
-//    @Autowired(required = false)
-//    private JavaMailSender mailSender;
+    @Autowired(required = false)
+    private JavaMailSender mailSender;
 
 
     @Override
@@ -114,26 +116,34 @@ public class CartServiceImpl implements CartService {
     }
 
 //    @Scheduled(cron = "0 * * * * *")
-//    public void sendMail(Order order) throws MessagingException, IOException, TemplateException {
-//        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
-//        freeMarkerConfigurer.setTemplateLoaderPath("classpath:templates/mail/templates");
-//        Configuration config = freeMarkerConfigurer.createConfiguration();
-//        Template mailTemplate = config.getTemplate("test-mail.ftlh");
-//        Map<String, Object> model = new HashMap<>();
-//        model.put("username", "joesmith");
-//        model.put("today", LocalDate.now());
-////        model.put("orders", List.of("Bakłażan", "Kalarepa", "Wężymord"));
-//        String mailBody = FreeMarkerTemplateUtils.processTemplateIntoString(mailTemplate, model);
-//
-//        MimeMessage mimeMessage = mailSender.createMimeMessage();
-//        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
-//        messageHelper.setFrom("karim.tounsi100@gmail.com");
-//        messageHelper.setSubject("Subject");
-//        messageHelper.setBcc(new String[]{"kartoun@interia.pl"});
-//        messageHelper.setText(mailBody, true);
-//        mailSender.send(mimeMessage);
-//
-//
-//    }
+
+    public void sendMail(Order order) throws MessagingException, IOException, TemplateException {
+        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
+        freeMarkerConfigurer.setTemplateLoaderPath("classpath:templates/mail/templates");
+        Configuration config = freeMarkerConfigurer.createConfiguration();
+        Template mailTemplate = config.getTemplate("test-mail.ftlh");
+        Map<String, Object> model = new HashMap<>();
+        model.put("email", order.getAddress().getEmail());
+        model.put("firstName", order.getAddress().getFirstName());
+        model.put("lastName", order.getAddress().getLastName());
+        model.put("streetHome", order.getAddress().getStreetHome());
+        model.put("country", order.getAddress().getCountry());
+        model.put("postcode", order.getAddress().getPostcode());
+        model.put("city", order.getAddress().getCity());
+        model.put("voivodeship", order.getAddress().getVoivodeship());
+
+        model.put("products", Map.copyOf(order.getProducts()));
+
+        String mailBody = FreeMarkerTemplateUtils.processTemplateIntoString(mailTemplate, model);
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+        messageHelper.setFrom("karim.tounsi100@gmail.com");
+        messageHelper.setSubject("Subject");
+        messageHelper.setBcc(new String[]{"kartoun@interia.pl"});
+        messageHelper.setText(mailBody, true);
+        mailSender.send(mimeMessage);
+
+
+    }
 
 }

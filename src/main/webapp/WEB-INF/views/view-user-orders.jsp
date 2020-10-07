@@ -60,6 +60,7 @@
         <c:forEach var="item" items="${order.products}">
 
             Nazwa: ${item.key.name} <br>
+            Cena: ${item.key.price}<br>
             Ilość: ${item.value} <br>
               </c:forEach>
             </td>

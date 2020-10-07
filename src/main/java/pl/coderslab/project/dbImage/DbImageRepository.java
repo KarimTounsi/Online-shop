@@ -13,7 +13,7 @@ public interface DbImageRepository extends JpaRepository<DbImage, Long> {
     @EntityGraph(type = EntityGraph.EntityGraphType.LOAD, attributePaths = "data")
     DbImage findWithDataById(Long id);
 
-//
+
 //    @Override
 //    List<DbFile> findAllBy;
 

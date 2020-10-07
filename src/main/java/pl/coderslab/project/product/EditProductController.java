@@ -1,5 +1,6 @@
 package pl.coderslab.project.product;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,16 +15,13 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/admin/product/edit")
+@AllArgsConstructor
 public class EditProductController {
 
     ProductService productService;
     CategoryService categoryService;
     CartService cartService;
 
-    public EditProductController(ProductService productService, @Qualifier("categoryServiceImpl") CategoryService categoryService) {
-        this.productService = productService;
-        this.categoryService = categoryService;
-    }
 
     @GetMapping
     public String editProduct(Model model, @RequestParam Long id) {

@@ -10,6 +10,7 @@ import pl.coderslab.project.cart.CartService;
 import pl.coderslab.project.category.Category;
 import pl.coderslab.project.category.CategoryService;
 import pl.coderslab.project.product.Product;
+import pl.coderslab.project.product.ProductService;
 
 import java.security.Principal;
 import java.util.List;
@@ -22,6 +23,7 @@ public class HomePageController {
 
     CategoryService categoryService;
     CartService cartService;
+    ProductService productService;
 
 
 
@@ -45,6 +47,11 @@ public class HomePageController {
     @ModelAttribute("ProductsInCart")
     public int ProductsInCart() {
         return cartService.getAmountProductsInCart();
+    }
+
+    @ModelAttribute("LastSixProducts")
+    public List <Product> LastSixProducts() {
+        return productService.getLastSixProducts();
     }
 
 
