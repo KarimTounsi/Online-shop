@@ -5,12 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-email
 
 
-<#list products?values as val>
 
+<#list products as  key, value>
+  ${key.name} = ${value}
 </#list>
-
 </body>
 </html>

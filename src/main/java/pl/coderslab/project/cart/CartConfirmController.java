@@ -67,7 +67,7 @@ public class CartConfirmController {
         order.setPaymentMethod(paymentMethod);
         order.setRealized(false);
         orderService.saveOrder(order);
-        cartService.sendMail(order);
+//        cartService.sendMail(order);
         return "redirect:/cart/confirm/checkout";
     }
 

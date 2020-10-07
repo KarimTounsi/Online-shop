@@ -30,7 +30,7 @@ public class testController {
     public String cart() throws MessagingException, IOException, TemplateException {
 
 
-        cartService.sendMail( orderService.getOrderByID(15L));
+        cartService.sendMail( orderService.getOrderByID(17L));
 
         return "wysłane";
     }
