@@ -1,7 +1,6 @@
 package pl.coderslab.project.product;
 
-import org.springframework.data.domain.Example;
-import org.springframework.data.jpa.repository.EntityGraph;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import pl.coderslab.project.category.Category;
 
@@ -41,6 +40,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List <Product> findAllByOrderByNameAsc();
 
     List <Product> findAllByOrderByNameDesc();
+
+    List <Product> findAllByOrderByIdDesc();
+
 
 
 }

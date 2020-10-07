@@ -28,5 +28,6 @@ public interface CartService {
 
     int getAmountProductsInCart();
 
-//    public void sendMail(Order order) throws MessagingException, IOException, TemplateException ;
+    public void sendToClientMail(Order order) throws MessagingException, IOException, TemplateException ;
+    public void sendToAdminMail(Order order) throws MessagingException, IOException, TemplateException ;
 }

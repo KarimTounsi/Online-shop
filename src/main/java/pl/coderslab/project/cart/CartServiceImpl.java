@@ -23,10 +23,12 @@ import org.springframework.web.context.WebApplicationContext;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -39,8 +41,8 @@ public class CartServiceImpl implements CartService {
 
     private Map<Product, Integer> products = new HashMap<>();
 
-//    @Autowired(required = false)
-//    private JavaMailSender mailSender;
+    @Autowired(required = false)
+    private JavaMailSender mailSender;
 
 
     @Override
@@ -114,26 +116,58 @@ public class CartServiceImpl implements CartService {
     }
 
 //    @Scheduled(cron = "0 * * * * *")
-//    public void sendMail(Order order) throws MessagingException, IOException, TemplateException {
-//        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
-//        freeMarkerConfigurer.setTemplateLoaderPath("classpath:templates/mail/templates");
-//        Configuration config = freeMarkerConfigurer.createConfiguration();
-//        Template mailTemplate = config.getTemplate("test-mail.ftlh");
-//        Map<String, Object> model = new HashMap<>();
-//        model.put("username", "joesmith");
-//        model.put("today", LocalDate.now());
-////        model.put("orders", List.of("Bakłażan", "Kalarepa", "Wężymord"));
-//        String mailBody = FreeMarkerTemplateUtils.processTemplateIntoString(mailTemplate, model);
-//
-//        MimeMessage mimeMessage = mailSender.createMimeMessage();
-//        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
-//        messageHelper.setFrom("karim.tounsi100@gmail.com");
-//        messageHelper.setSubject("Subject");
-//        messageHelper.setBcc(new String[]{"kartoun@interia.pl"});
-//        messageHelper.setText(mailBody, true);
-//        mailSender.send(mimeMessage);
-//
-//
-//    }
+
+    public void sendToClientMail(Order order) throws MessagingException, IOException, TemplateException {
+        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
+        freeMarkerConfigurer.setTemplateLoaderPath("classpath:templates/mail/templates");
+        Configuration config = freeMarkerConfigurer.createConfiguration();
+        Template mailTemplate = config.getTemplate("email-to-client.ftlh");
+        Map<String, Object> model = new HashMap<>();
+        model.put("id", order.getId());
+        model.put("created", order.getCreated());
+        model.put("adres", order.getAddress());
+        model.put("products", Map.copyOf(order.getProducts()));
+        model.put("transportType", order.getTransportType());
+        model.put("transportPrice", order.getTransportPrice());
+        model.put("orderSum", order.getOrderSum());
+        model.put("paymentMethod", order.getPaymentMethod());
+
+        String mailBody = FreeMarkerTemplateUtils.processTemplateIntoString(mailTemplate, model);
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+        messageHelper.setFrom("karim.tounsi100@gmail.com");
+        messageHelper.setSubject("ImStore - zamówienie Nr: "+order.getId());
+        messageHelper.setBcc(new String[]{order.getAddress().getEmail()});
+        messageHelper.setText(mailBody, true);
+        mailSender.send(mimeMessage);
+
+
+    }
+
+    @Override
+    public void sendToAdminMail(Order order) throws MessagingException, IOException, TemplateException {
+        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
+        freeMarkerConfigurer.setTemplateLoaderPath("classpath:templates/mail/templates");
+        Configuration config = freeMarkerConfigurer.createConfiguration();
+        Template mailTemplate = config.getTemplate("email-to-admin.ftlh");
+        Map<String, Object> model = new HashMap<>();
+        model.put("id", order.getId());
+        model.put("created", order.getCreated());
+        model.put("adres", order.getAddress());
+        model.put("products", Map.copyOf(order.getProducts()));
+        model.put("transportType", order.getTransportType());
+        model.put("transportPrice", order.getTransportPrice());
+        model.put("orderSum", order.getOrderSum());
+        model.put("paymentMethod", order.getPaymentMethod());
+
+        String mailBody = FreeMarkerTemplateUtils.processTemplateIntoString(mailTemplate, model);
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+        messageHelper.setFrom("karim.tounsi100@gmail.com");
+        messageHelper.setSubject("ImStore - zamówienie Nr: "+order.getId());
+        messageHelper.setBcc(new String[]{"karim.tounsi100@gmail.com"});
+        messageHelper.setText(mailBody, true);
+        mailSender.send(mimeMessage);
+    }
 
 }

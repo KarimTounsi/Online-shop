@@ -46,7 +46,7 @@ public class CartConfirmController {
     }
 
     @PostMapping("/cart/confirm")
-    public String cartConfirm(@Valid Address address, BindingResult bindingResult, Principal principal, BigDecimal transport,BigDecimal sum, String paymentMethod ) {
+    public String cartConfirm(@Valid Address address, BindingResult bindingResult, Principal principal, BigDecimal transport,BigDecimal sum, String paymentMethod ) throws MessagingException, IOException, TemplateException {
         if (bindingResult.hasErrors()) {
             return "cart-confirm";
         }
@@ -67,14 +67,14 @@ public class CartConfirmController {
         order.setPaymentMethod(paymentMethod);
         order.setRealized(false);
         orderService.saveOrder(order);
+        cartService.sendToClientMail(order);
+        cartService.sendToAdminMail(order);
         return "redirect:/cart/confirm/checkout";
     }
 
     @GetMapping("/cart/confirm/checkout")
-    public String cartConfirmCheckout( ) throws NotEnoughProductsInStockException {
-
+    public String cartConfirmCheckout( ) throws NotEnoughProductsInStockException, MessagingException, IOException, TemplateException {
         cartService.checkout();
-
         return "redirect:/";
     }
 

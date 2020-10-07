@@ -49,5 +49,5 @@ public interface ProductService {
    List<Product> getProductsByCategoryOrderByNameAsc(Category category);
 
    List<Product> getProductsByCategoryOrderByNameDesc(Category category);
-
+   List <Product> getLastSixProducts();
 }

@@ -34,28 +34,5 @@ public class ProjectApplication {
         SpringApplication.run(ProjectApplication.class, args);
     }
 
-//        @Autowired(required = false)
-//        private JavaMailSender mailSender;
-//
-//        @Scheduled(cron = "0 * * * * *")
-//        public void sendMail() throws MessagingException, IOException, TemplateException {
-//            FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
-//            freeMarkerConfigurer.setTemplateLoaderPath("classpath:templates/mail/templates");
-//            Configuration config = freeMarkerConfigurer.createConfiguration();
-//            Template mailTemplate = config.getTemplate("test-mail.ftlh");
-//            Map<String, Object> model = new HashMap<>();
-//            model.put("username", "joesmith");
-//            model.put("today", LocalDate.now());
-//            model.put("orders", List.of("Bakłażan", "Kalarepa", "Wężymord"));
-//            String mailBody = FreeMarkerTemplateUtils.processTemplateIntoString(mailTemplate, model);
-//
-//            MimeMessage mimeMessage = mailSender.createMimeMessage();
-//            MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
-//            messageHelper.setFrom("stevejob@apple.com");
-//            messageHelper.setSubject("Cudowne życie programisty");
-//            messageHelper.setBcc(new String[]{"michal.kupisinski@gmail.com"});
-//            messageHelper.setText(mailBody, true);
-//            mailSender.send(mimeMessage);
-//        }
     }
 

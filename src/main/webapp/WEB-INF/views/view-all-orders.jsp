@@ -73,6 +73,7 @@
 
             Id: ${item.key.id} <br>
             Nazwa: ${item.key.name} <br>
+            Cena: ${item.key.price}<br>
             Ilość: ${item.value} <br>
               </c:forEach>
             </td>
