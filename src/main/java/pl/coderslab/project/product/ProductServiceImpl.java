@@ -16,8 +16,8 @@ public class ProductServiceImpl implements ProductService {
     ProductRepository productRepository;
 
     @Override
-    public List<Product> findProductsByNameIsStartingWithName(String name) {
-        return productRepository.findProductsByStatusTrueAndNameIsStartingWith(name);
+    public List<Product> getProductsByNameContaining(String name) {
+        return productRepository.findProductsByStatusTrueAndNameContaining(name);
     }
 
     @Override

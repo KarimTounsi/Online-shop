@@ -30,7 +30,7 @@ public class SearchProductController {
 
     @PostMapping
     public String viewProductsBySort(Model model , String search) {
-        model.addAttribute("products", productService.findProductsByNameIsStartingWithName(search));
+        model.addAttribute("products", productService.getProductsByNameContaining(search));
         model.addAttribute("search", search);
         return "view-search-products";
     }

@@ -28,7 +28,7 @@
                     <div class="preview-pic tab-content">
                         <div class="tab-pane active" id="pic-1">
                             <c:forEach varStatus="theCount" items="${product.images}" var="image">
-                                <img title="${image.imageName}" src="/image/view/${image.id}" width="400" height="252" class="pt-2"/>
+                                <img title="${image.imageName}" src="/image/view/${image.id}"  class="pt-2"/>
                             </c:forEach>
                         </div>
                     </div>

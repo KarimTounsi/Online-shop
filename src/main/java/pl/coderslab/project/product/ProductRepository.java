@@ -9,7 +9,7 @@ import java.util.*;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
 
-    List<Product> findProductsByStatusTrueAndNameIsStartingWith(String name);
+    List<Product> findProductsByStatusTrueAndNameContaining(String name);
 
     List<Product> findProductsByStatusTrueAndNameIsStartingWithOrderByPriceAsc(String name);
 

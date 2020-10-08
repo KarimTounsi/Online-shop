@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface ProductService {
 
-   List <Product> findProductsByNameIsStartingWithName(String name);
+   List <Product> getProductsByNameContaining(String name);
 
    List <Product> getAll();
    List <Product> getAllByStatus(boolean status);

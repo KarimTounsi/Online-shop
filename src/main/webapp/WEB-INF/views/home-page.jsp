@@ -50,7 +50,7 @@
         <div class="row">
             <c:forEach varStatus="theCount" items="${LastSixProducts}" var="product">
             <div class="col-md-4 col-xl-2 text-center">
-                    <h2>${product.name}</h2>
+                    <h4>${product.name}</h4>
                     <p>
                         <c:forEach varStatus="theCount" items="${product.images}" var="image" end="0">
                             <img  src="/image/view/${image.id}" width="200" height="200"/>

@@ -40,7 +40,7 @@
             </div>
            </th>
         <th scope="col"></th>
-        <th scope="col"></th>
+<%--        <th scope="col"></th>--%>
         <th scope="col">
             <div class="btn-group">
                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -57,6 +57,9 @@
                 </div>
             </div>
            </th>
+        <sec:authorize access="isAuthenticated()">
+            <th scope="col"></th>
+        </sec:authorize>
         <sec:authorize access="hasRole('ROLE_ADMIN')">
             <th></th>
             <th></th>
@@ -65,9 +68,8 @@
     </tr>
     <tr>
         <th scope="col"></th>
-
         <th scope="col">Nazwa produktu</th>
-        <th scope="col">Opis</th>
+<%--        <th scope="col">Opis</th>--%>
         <th scope="col">Status</th>
         <th scope="col">Cena</th>
 <sec:authorize access="isAuthenticated()">
@@ -109,14 +111,11 @@
     <c:forEach varStatus="theCount" items="${products}" var="product">
         <tr>
             <th scope="row">${theCount.index +1}</th>
-            <td>
-                <c:forEach varStatus="theCount" items="${product.images}" var="image">
-
+            <td><c:forEach varStatus="theCount" items="${product.images}" var="image">
                 <img  src="/image/view/${image.id}" width="70" height="70"/>
-
             </c:forEach>
                 <a href="/product/${product.id}"  style="color: black" class="font-weight-bold">${product.name}</a></td>
-            <td>${product.description}</td>
+<%--            <td>${product.description}</td>--%>
             <td>
                 <c:choose>
                     <c:when test="${product.quantity > 1}">
