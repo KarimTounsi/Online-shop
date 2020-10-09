@@ -9,6 +9,7 @@ import pl.coderslab.project.product.Product;
 import pl.coderslab.project.user.User;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -19,6 +20,7 @@ import java.util.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Transactional
 public class Order {
 
 

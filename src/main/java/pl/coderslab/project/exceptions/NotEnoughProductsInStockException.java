@@ -1,4 +1,4 @@
-package pl.coderslab.project.cart.exception;
+package pl.coderslab.project.exceptions;
 
 
 import pl.coderslab.project.product.Product;

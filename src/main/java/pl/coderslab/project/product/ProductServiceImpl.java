@@ -5,12 +5,14 @@ import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import pl.coderslab.project.category.Category;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
+@Transactional
 public class ProductServiceImpl implements ProductService {
 
     ProductRepository productRepository;

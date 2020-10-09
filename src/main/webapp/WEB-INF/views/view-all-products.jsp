@@ -57,7 +57,7 @@
                 </div>
             </div>
            </th>
-        <sec:authorize access="isAuthenticated()">
+        <sec:authorize access="hasRole('ROLE_CLIENT')">
             <th scope="col"></th>
         </sec:authorize>
         <sec:authorize access="hasRole('ROLE_ADMIN')">

@@ -38,33 +38,31 @@
 <body>
 
 <jsp:include page="fragments/main-menu.jsp"/>
-<main role="main">
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <div class="container text-center bigLogo">
-            <img src="/img/logo.png" width="300" height="300"/><h1 class="display-3"> ImStore</h1>
+
+<div class="container exception">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template">
+                <h1>
+                    Oops!</h1>
+                <h2>
+                   </h2>
+                <div class="error-details">
+                    ${errorMessage}
+                </div>
+                <div class="error-actions">
+                    <a href="/cart" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                    Wróć do koszyka</a>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <!-- Example row of columns -->
-        <div class="row">
-            <c:forEach varStatus="theCount" items="${LastSixProducts}" var="product">
-            <div class="col-md-4 col-xl-2 text-center">
-                    <h4>${product.name}</h4>
-                    <p>
-                        <c:forEach varStatus="theCount" items="${product.images}" var="image" end="0">
-                            <img  src="/image/view/${image.id}" width="200" height="200"/>
-                        </c:forEach>
-                    </p>
-                    <p><a class="btn btn-secondary" href="/product/${product.id}" role="button">Pokaż szczegóły &raquo;</a></p>
-            </div>
-            </c:forEach>
-        </div>
-    </div> <!-- /container -->
-</main>
+</div>
 
-<footer class="container-fluid">
-</footer>
+
+
+
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

@@ -2,10 +2,13 @@ package pl.coderslab.project.dbImage;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 import java.util.List;
 
 @AllArgsConstructor
 @Service
+@Transactional
 public class DbImageServiceImpl implements DbImageService {
 
     DbImageRepository dbImageRepository;

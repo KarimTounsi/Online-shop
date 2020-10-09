@@ -8,13 +8,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.project.address.Address;
 import pl.coderslab.project.address.AddressService;
-import pl.coderslab.project.cart.exception.NotEnoughProductsInStockException;
+import pl.coderslab.project.exceptions.NotEnoughProductsInStockException;
 import pl.coderslab.project.order.Order;
 import pl.coderslab.project.order.OrderService;
-import pl.coderslab.project.product.Product;
 import pl.coderslab.project.product.ProductService;
 import pl.coderslab.project.user.UserService;
 
@@ -75,7 +73,7 @@ public class CartConfirmController {
     @GetMapping("/cart/confirm/checkout")
     public String cartConfirmCheckout( ) throws NotEnoughProductsInStockException, MessagingException, IOException, TemplateException {
         cartService.checkout();
-        return "redirect:/";
+        return "redirect:/user/orders";
     }
 
 

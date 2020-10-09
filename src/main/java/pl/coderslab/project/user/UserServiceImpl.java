@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 
 
 @AllArgsConstructor
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
 

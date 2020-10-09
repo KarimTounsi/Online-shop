@@ -10,6 +10,7 @@ import pl.coderslab.project.category.Category;
 import pl.coderslab.project.dbImage.DbImage;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import java.math.BigDecimal;
@@ -23,6 +24,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Transactional
 public class Product {
 
     @Id
