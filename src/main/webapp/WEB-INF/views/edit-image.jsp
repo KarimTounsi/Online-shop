@@ -22,7 +22,7 @@
         <div class="col-6">
             <form:form method="post" action="/admin/image/edit" >
                 <input type="text" required name="id" id="id" value="${imageId}" hidden />
-                <img title="${image.imageName}" src="/admin/image/image-without-relations/${imageId}" width="250" height="160"/>
+                <img title="${image.imageName}" src="/image/view/${imageId}" width="250" height="160"/>
                 <div class="form-group">
                     <label for="imageName">Nazwa zdjęcia</label>
                     <input type="text" required name="imageName" id="imageName" value="${imageName}" class="form-control"

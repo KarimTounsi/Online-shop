@@ -19,7 +19,7 @@ public class ViewDbImageController {
     DbImageService dbImageService;
 
 
-    @GetMapping("/{id:[\\d+]}")
+    @GetMapping("/{id:\\d+}")
     public ResponseEntity<Resource> getFile(@PathVariable Long id) {
         DbImage dbImage = dbImageService.getWithDataById(id);
         ByteArrayResource resource = new ByteArrayResource(dbImage.getData());
