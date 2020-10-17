@@ -20,7 +20,7 @@ public class AddDbImageController {
 
     @GetMapping
     public String addFile() {
-        return "add-file";
+        return "dbImage/add-image";
     }
 
         @PostMapping

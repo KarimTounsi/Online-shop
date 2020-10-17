@@ -26,7 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
 
-                .antMatchers("/","/js/**", "/css/**","/img/**").permitAll()
+                .antMatchers("/","/js/**", "/css/**","/img/**","/WEB-INF/views/**").permitAll()
                 .antMatchers("/register","/all","/search/**","/products-from-category/**","/product/**","/image/**","/test").permitAll()
                 .antMatchers("/login").anonymous()
                 .antMatchers("/admin/**").hasRole("ADMIN")
@@ -55,15 +55,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
 
-//    @Bean
-//    public SpringDataUserDetailsService customUserDetailsService() {
-//        return new SpringDataUserDetailsService();
-//    }
-
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(customUserDetailsService())
-//                .passwordEncoder(passwordEncoder());
-//    }
 
 }

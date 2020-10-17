@@ -27,7 +27,7 @@ public class infoUserController {
         String name = principal.getName();
       User user =  userService.findByUserName(name);
         model.addAttribute("user",user);
-        return "info-account";
+        return "user/info-account";
     }
 
     @ModelAttribute("categories")

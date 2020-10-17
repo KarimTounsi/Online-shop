@@ -29,13 +29,13 @@ public class AddProductController {
     @GetMapping
     public String addProduct(Model model) {
         model.addAttribute("product", new Product());
-        return "add-product";
+        return "product/add-product";
     }
 
     @PostMapping
     public String addProduct(@Valid Product product,   BindingResult bindingResult) {
         if (bindingResult.hasErrors()){
-            return "add-product";
+            return "product/add-product";
         }
 
         productService.saveProduct(product);

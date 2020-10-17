@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.coderslab.project.exceptions.NotEnoughProductsInStockException;
+import pl.coderslab.project.exception.NotEnoughProductsInStockException;
 import pl.coderslab.project.category.Category;
 import pl.coderslab.project.category.CategoryService;
 import pl.coderslab.project.product.Product;
@@ -26,7 +26,7 @@ public class CartController {
     public String cart(Model model) {
         model.addAttribute("cart",cartService.getProductsInCart());
         model.addAttribute("cartSum",cartService.getTotal());
-        return "cart";
+        return "cart/cart";
     }
 
 

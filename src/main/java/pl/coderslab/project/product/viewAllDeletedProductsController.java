@@ -2,10 +2,8 @@ package pl.coderslab.project.product;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.project.cart.CartService;
 import pl.coderslab.project.category.Category;
@@ -31,7 +29,7 @@ ProductService productService;
 
     @GetMapping
     public String viewProducts() {
-        return "view-all-deleted-products";
+        return "product/view-all-deleted-products";
     }
 
 

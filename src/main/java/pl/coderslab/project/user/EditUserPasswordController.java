@@ -1,17 +1,16 @@
 package pl.coderslab.project.user;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.project.category.Category;
 import pl.coderslab.project.category.CategoryService;
+import pl.coderslab.project.exception.WrongPasswordException;
 
-import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
@@ -22,22 +21,27 @@ public class EditUserPasswordController {
 
     UserService userService;
     CategoryService categoryService;
-
+    private final PasswordEncoder passwordEncoder;
 
     @GetMapping
-    public String editUserPassword(Model model , Principal principal) {
-        model.addAttribute("user",userService.findByUserName(principal.getName()));
-        return "edit-user-password";
+    public String editUserPassword() {
+        return "user/edit-user-password";
     }
 
 
     @PostMapping
-    public String editUserPassword(@Valid User user, BindingResult result,Principal principal) {
-        if (result.hasErrors()) {
-            return "edit-user-password";
+    public String editUserPassword(Principal principal, String password, String newPassword ) throws WrongPasswordException {
+
+        User user = userService.findByUserName(principal.getName());
+        if (passwordEncoder.matches(password,user.getPassword())) {
+            user.setPassword(newPassword);
+//        user.setId(userService.findByUserName(principal.getName()).getId());
+            userService.saveUser(user);
+        } else {
+            throw new WrongPasswordException(user);
         }
-        user.setId(userService.findByUserName(principal.getName()).getId());
-        userService.saveUser(user);
+
+
         return "redirect:/info";
     }
 

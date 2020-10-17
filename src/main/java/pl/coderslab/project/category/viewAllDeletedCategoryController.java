@@ -21,7 +21,7 @@ public class viewAllDeletedCategoryController {
     @GetMapping
     public String viewCategories() {
 
-        return "view-all-deleted-categories";
+        return "category/view-all-deleted-categories";
     }
 
     @ModelAttribute("categoriesWithStatusFalse")

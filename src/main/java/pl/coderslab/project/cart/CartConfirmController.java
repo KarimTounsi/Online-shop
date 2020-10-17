@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.project.address.Address;
 import pl.coderslab.project.address.AddressService;
-import pl.coderslab.project.exceptions.NotEnoughProductsInStockException;
+import pl.coderslab.project.exception.NotEnoughProductsInStockException;
 import pl.coderslab.project.order.Order;
 import pl.coderslab.project.order.OrderService;
 import pl.coderslab.project.product.ProductService;
@@ -40,13 +40,13 @@ public class CartConfirmController {
         model.addAttribute("transport", transport);
         model.addAttribute("user", userService.findByUserName(principal.getName()));
         model.addAttribute("address", new Address());
-        return "cart-confirm";
+        return "cart/cart-confirm";
     }
 
     @PostMapping("/cart/confirm")
     public String cartConfirm(@Valid Address address, BindingResult bindingResult, Principal principal, BigDecimal transport,BigDecimal sum, String paymentMethod ) throws MessagingException, IOException, TemplateException {
         if (bindingResult.hasErrors()) {
-            return "cart-confirm";
+            return "cart/cart-confirm";
         }
         addressService.saveAddress(address);
         Order order = new Order();

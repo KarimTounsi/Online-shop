@@ -27,7 +27,7 @@ public class EditDbImageController {
         model.addAttribute("imageName", dbImage.getImageName());
         model.addAttribute("imageId", dbImage.getId());
 
-        return "edit-image";
+        return "dbImage/edit-image";
     }
 
     @PostMapping

@@ -16,7 +16,7 @@ public class ViewDbImageWithoutRelationsController {
     @GetMapping
     public String prepareFilesPage(Model model) {
         model.addAttribute("images", dbImageService.getAllDbFileWithProductRelations());
-        return "view-all-Images";
+        return "dbImage/view-all-Images";
     }
 
 }

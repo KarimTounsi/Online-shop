@@ -1,7 +1,6 @@
 package pl.coderslab.project.product;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,7 +9,6 @@ import pl.coderslab.project.cart.CartService;
 import pl.coderslab.project.category.Category;
 import pl.coderslab.project.category.CategoryService;
 import pl.coderslab.project.dbImage.DbImage;
-import pl.coderslab.project.dbImage.DbImageRepository;
 import pl.coderslab.project.dbImage.DbImageService;
 
 import javax.validation.Valid;
@@ -31,13 +29,13 @@ public class EditProductController {
     public String editProduct(Model model, @RequestParam Long id) {
         Product product = productService.getProductById(id);
         model.addAttribute("product", product);
-        return "edit-product";
+        return "product/edit-product";
     }
 
     @PostMapping
     public String editProduct(@Valid Product product, BindingResult result) {
         if (result.hasErrors()) {
-            return "edit-product";
+            return "product/edit-product";
         }
         productService.saveProduct(product);
         return "redirect:/all";

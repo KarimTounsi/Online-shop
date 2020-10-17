@@ -31,7 +31,7 @@ ProductService productService;
 
     @GetMapping
     public String viewProducts() {
-        return "view-all-products";
+        return "product/view-all-products";
     }
 
     @PostMapping
@@ -46,7 +46,7 @@ ProductService productService;
             model.addAttribute("products", productService.getAllByOrderByNameDsc());
         }
 
-        return "view-all-products";
+        return "product/view-all-products";
     }
 
     @ModelAttribute("categories")

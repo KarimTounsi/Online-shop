@@ -3,7 +3,7 @@ package pl.coderslab.project.cart;
 
 
 import freemarker.template.TemplateException;
-import pl.coderslab.project.exceptions.NotEnoughProductsInStockException;
+import pl.coderslab.project.exception.NotEnoughProductsInStockException;
 import pl.coderslab.project.order.Order;
 import pl.coderslab.project.product.Product;
 

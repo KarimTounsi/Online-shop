@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.coderslab.project.exception.WrongSecondPasswordException;
 
 
 import javax.validation.Valid;
@@ -35,16 +36,20 @@ public class RegistrationController {
     @GetMapping
     public String prepareRegistrationPage(Model model) {
         model.addAttribute("user", new User());
-        return "registration-form";
+        return "user/registration-form";
     }
 
     @PostMapping
-    public String processRegistrationPage(@Valid User user, BindingResult bindingResult) {
+    public String processRegistrationPage(String passwordSecondTime,  @Valid User user, BindingResult bindingResult) throws WrongSecondPasswordException {
         if (bindingResult.hasErrors()){
-            return "registration-form";
+            return "user/registration-form";
         }
-        userService.saveUser(user);
-        log.info("Zapisany użytkownik: " + user);
+        if (passwordSecondTime.equals(user.getPassword()) ){
+            userService.saveUser(user);
+            log.info("Zapisany użytkownik: " + user);
+        } else{
+            throw new WrongSecondPasswordException();
+        }
         return "redirect:/login";
     }
 

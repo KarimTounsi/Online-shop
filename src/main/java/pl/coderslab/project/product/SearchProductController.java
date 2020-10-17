@@ -32,7 +32,7 @@ public class SearchProductController {
     public String viewProductsBySort(Model model , String search) {
         model.addAttribute("products", productService.getProductsByNameContaining(search));
         model.addAttribute("search", search);
-        return "view-search-products";
+        return "product/view-search-products";
     }
 
 
@@ -51,7 +51,7 @@ public class SearchProductController {
             model.addAttribute("products", productService.getProductsByNameIsStartingWithOrderByNameDesc(search));
         }
 
-        return "view-search-products";
+        return "product/view-search-products";
     }
 
 

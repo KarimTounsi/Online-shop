@@ -8,7 +8,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
-import pl.coderslab.project.exceptions.NotEnoughProductsInStockException;
+import pl.coderslab.project.exception.NotEnoughProductsInStockException;
 import pl.coderslab.project.order.Order;
 import pl.coderslab.project.product.Product;
 import pl.coderslab.project.product.ProductRepository;
@@ -50,7 +50,7 @@ public class CartServiceImpl implements CartService {
         } else {
             products.put(product, 1);
         }
-        if (product.getQuantity() < products.get(product)){
+        if (product.getQuantity() -1 < products.get(product)){
             products.replace(product, products.get(product) - 1);
             throw new NotEnoughProductsInStockException(product);
         }

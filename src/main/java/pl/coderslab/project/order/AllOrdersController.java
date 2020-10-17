@@ -24,7 +24,7 @@ public class AllOrdersController {
 
     @GetMapping
     public String viewAllOrders() {
-        return "view-all-orders";
+        return "order/view-all-orders";
     }
 
 

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.project.category.Category;
 import pl.coderslab.project.category.CategoryService;
-import pl.coderslab.project.product.Product;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -28,14 +27,14 @@ public class EditUserController {
     @GetMapping
     public String editUser(Model model , Principal principal) {
         model.addAttribute("user",userService.findByUserName(principal.getName()));
-        return "edit-user-info";
+        return "user/edit-user-info";
     }
 
 
     @PostMapping
     public String editUser(@Valid User user, BindingResult result,Principal principal) {
         if (result.hasErrors()) {
-            return "edit-user-info";
+            return "user/edit-user-info";
         }
         user.setId(userService.findByUserName(principal.getName()).getId());
         user.setPassword(userService.findByUserName(principal.getName()).getPassword());

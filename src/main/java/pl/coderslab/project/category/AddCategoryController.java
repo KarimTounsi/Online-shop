@@ -1,7 +1,6 @@
 package pl.coderslab.project.category;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,13 +26,13 @@ public class AddCategoryController {
     @GetMapping
     public String addCategory(Model model) {
         model.addAttribute("category", new Category());
-        return "add-category";
+        return "category/add-category";
     }
 
     @PostMapping
     public String addCategory(@Valid Category category, BindingResult bindingResult) {
         if (bindingResult.hasErrors()){
-            return "add-category";
+            return "category/add-category";
         }
 
    categoryService.saveCategory(category);

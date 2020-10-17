@@ -36,7 +36,7 @@ public class viewProductController {
         model.addAttribute("product", productService.getProductById(productId));
 
 
-        return "view-product";
+        return "product/view-product";
     }
 
 
