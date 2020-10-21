@@ -1,4 +1,4 @@
-# Project: Online shop
+# Online-shop
 
 ## Table of Contents
 
