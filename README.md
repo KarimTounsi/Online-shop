@@ -25,8 +25,8 @@ Online shop Web App. management by admin. client can register account and order 
 ## functionalities 
 * Crud App.
 * Register, login.
-* admin: can add/edit/remove - categories, images, products.
- see all orders list and change order status. Admin can do also client operation.
-* client: add product to cart, increase or decrese products, remove them from cart, order prodcuts.
- see his order list with order status. change personal information and password.
-* after order confirm sending email to client and admin.
+* Admin: can add/edit/remove - categories, images, products.
+ See all orders list and change order status. Admin can do also client operation.
+* Client: add product to cart, increase or decrese products, remove them from cart, order prodcuts.
+ See his order list with order status. Change personal information and password.
+* After order confirm sending email to client and admin.
