@@ -17,8 +17,8 @@ import java.util.List;
 public class viewAllCategoryController {
 
 
-    CategoryService categoryService;
-    CartService cartService;
+    private final  CategoryService categoryService;
+    private final  CartService cartService;
 
     @GetMapping
     public String viewCategories() {

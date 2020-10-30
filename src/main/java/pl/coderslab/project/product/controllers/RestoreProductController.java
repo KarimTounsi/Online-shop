@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Controller
 public class RestoreProductController {
 
-    ProductService productService;
+    private final  ProductService productService;
 
 
     public RestoreProductController(ProductService productService) {

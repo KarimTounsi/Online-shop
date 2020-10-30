@@ -22,10 +22,10 @@ import java.util.List;
 @AllArgsConstructor
 public class AddProductController {
 
-    ProductService productService;
-    CategoryService categoryService;
-    CartService cartService;
-    DbImageService dbImageService;
+    private final  ProductService productService;
+    private final   CategoryService categoryService;
+    private final   CartService cartService;
+    private final   DbImageService dbImageService;
 
 
     @GetMapping

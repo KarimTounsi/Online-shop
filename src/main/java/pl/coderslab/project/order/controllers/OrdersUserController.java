@@ -19,9 +19,9 @@ import java.util.List;
 @AllArgsConstructor
 public class OrdersUserController {
 
-    OrderService orderService;
-    CategoryService categoryService;
-    CartService cartService;
+    private final  OrderService orderService;
+    private final  CategoryService categoryService;
+    private final  CartService cartService;
 
     @GetMapping
     public String viewAllOrders() {

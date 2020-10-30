@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class RestoreCategoryController {
 
-    CategoryService categoryService;
+    private final  CategoryService categoryService;
 
 
 

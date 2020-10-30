@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Transactional
 public class ProductServiceImpl implements ProductService {
 
-    ProductRepository productRepository;
+    private final  ProductRepository productRepository;
 
     @Override
     public List<Product> getProductsByNameContaining(String name) {

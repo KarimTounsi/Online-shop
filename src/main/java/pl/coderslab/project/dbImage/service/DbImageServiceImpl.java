@@ -13,7 +13,7 @@ import java.util.List;
 @Transactional
 public class DbImageServiceImpl implements DbImageService {
 
-    DbImageRepository dbImageRepository;
+    private final  DbImageRepository dbImageRepository;
 
     @Override
     public List<DbImage> getAllByContentTypeStartsWith(String mediaType) {

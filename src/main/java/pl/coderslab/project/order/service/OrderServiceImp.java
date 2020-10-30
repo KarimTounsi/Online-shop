@@ -13,7 +13,7 @@ import java.util.List;
 @Transactional
 public class OrderServiceImp implements OrderService {
 
-    OrderRepository orderRepository;
+    private final  OrderRepository orderRepository;
 
     @Override
     public void saveOrder(Order order) {

@@ -21,10 +21,10 @@ import java.util.List;
 @AllArgsConstructor
 public class EditProductController {
 
-    ProductService productService;
-    CategoryService categoryService;
-    CartService cartService;
- DbImageService dbImageService;
+    private final ProductService productService;
+    private final CategoryService categoryService;
+    private final CartService cartService;
+    private final DbImageService dbImageService;
 
 
     @GetMapping
@@ -45,7 +45,7 @@ public class EditProductController {
 
 
     @ModelAttribute("images")
-    public List<DbImage>  getAllImagesWithProductRelations() {
+    public List<DbImage> getAllImagesWithProductRelations() {
         return dbImageService.getAllDbFileWithProductRelations();
     }
 

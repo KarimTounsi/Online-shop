@@ -17,8 +17,8 @@ import java.util.List;
 @AllArgsConstructor
 public class EditCategoryController {
 
-    CategoryService categoryService;
-    CartService cartService;
+    private final  CategoryService categoryService;
+    private final  CartService cartService;
 
     @GetMapping
     public String editCategory(Model model, @RequestParam Long id) {

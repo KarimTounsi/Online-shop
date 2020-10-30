@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Controller
 public class DeleteProductController {
 
-    ProductService productService;
+    private final  ProductService productService;
 
 
     public DeleteProductController(ProductService productService) {

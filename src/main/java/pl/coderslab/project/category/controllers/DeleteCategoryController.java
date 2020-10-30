@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class DeleteCategoryController {
 
-    CategoryService categoryService;
+    private final  CategoryService categoryService;
 
 
 

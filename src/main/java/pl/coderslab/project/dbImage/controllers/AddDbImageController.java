@@ -17,8 +17,8 @@ import java.util.List;
 @AllArgsConstructor
 public class AddDbImageController {
 
-    DbImageService dbImageService;
-    CategoryService categoryService;
+    private final  DbImageService dbImageService;
+    private final  CategoryService categoryService;
 
     @GetMapping
     public String addFile() {

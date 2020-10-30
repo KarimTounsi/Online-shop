@@ -18,9 +18,9 @@ import java.util.List;
 public class EditDbImageController {
 
 
-    CartService cartService;
-    DbImageService dbImageService;
-    CategoryService categoryService;
+    private final  CartService cartService;
+    private final  DbImageService dbImageService;
+    private final  CategoryService categoryService;
 
     @GetMapping
     public String editImage(Model model, @RequestParam Long id) {

@@ -22,8 +22,8 @@ import java.util.List;
 @AllArgsConstructor
 public class EditUserController {
 
-    UserService userService;
-    CategoryService categoryService;
+    private final  UserService userService;
+    private final  CategoryService categoryService;
 
 
     @GetMapping

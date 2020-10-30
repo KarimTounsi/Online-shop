@@ -21,8 +21,8 @@ import java.util.List;
 @AllArgsConstructor
 public class AddCategoryController {
 
-    CategoryService categoryService;
-    CartService cartService;
+    private final   CategoryService categoryService;
+    private final   CartService cartService;
 
 
     @GetMapping

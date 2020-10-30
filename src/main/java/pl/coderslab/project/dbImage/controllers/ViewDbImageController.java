@@ -18,7 +18,7 @@ import pl.coderslab.project.dbImage.service.DbImageService;
 @AllArgsConstructor
 public class ViewDbImageController {
 
-    DbImageService dbImageService;
+    private final  DbImageService dbImageService;
 
 
     @GetMapping("/{id:\\d+}")

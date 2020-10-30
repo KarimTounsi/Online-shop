@@ -20,9 +20,9 @@ import java.util.List;
 @AllArgsConstructor
 public class AllOrdersController {
 
-    OrderService orderService;
-    CategoryService categoryService;
-    CartService cartService;
+    private final  OrderService orderService;
+    private final  CategoryService categoryService;
+    private final  CartService cartService;
 
     @GetMapping
     public String viewAllOrders() {

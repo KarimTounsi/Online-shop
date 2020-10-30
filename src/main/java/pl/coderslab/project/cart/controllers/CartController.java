@@ -19,9 +19,9 @@ import java.util.List;
 @AllArgsConstructor
 public class CartController {
 
-    ProductService productService;
-    CartService cartService;
-    CategoryService categoryService;
+    private final  ProductService productService;
+    private final  CartService cartService;
+    private final  CategoryService categoryService;
 
     @GetMapping("/cart")
     public String cart(Model model) {

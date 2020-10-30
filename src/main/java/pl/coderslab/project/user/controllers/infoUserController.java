@@ -20,9 +20,9 @@ import java.util.List;
 @RequestMapping("/info")
 @AllArgsConstructor
 public class infoUserController {
-    UserService userService;
-    CategoryService categoryService;
 
+    private final  UserService userService;
+    private final  CategoryService categoryService;
 
     @GetMapping
     public String prepareHomePage(Model model, Principal principal) {

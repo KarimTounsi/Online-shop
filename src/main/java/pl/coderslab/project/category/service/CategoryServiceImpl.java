@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Transactional
 public class CategoryServiceImpl implements CategoryService {
 
-    CategoryRepository categoryRepository;
+    private final  CategoryRepository categoryRepository;
 
     @Override
     public void saveCategory(Category category) {

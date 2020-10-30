@@ -13,8 +13,8 @@ import pl.coderslab.project.dbImage.service.DbImageService;
 @AllArgsConstructor
 public class DeleteDbImageController {
 
-    CategoryService categoryService;
-    DbImageService dbImageService;
+    private final  CategoryService categoryService;
+    private final  DbImageService dbImageService;
 
 
 

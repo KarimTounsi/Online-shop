@@ -12,7 +12,7 @@ import pl.coderslab.project.dbImage.service.DbImageService;
 @AllArgsConstructor
 public class ViewDbImageWithoutRelationsController {
 
-    DbImageService dbImageService;
+    private final  DbImageService dbImageService;
 
     @GetMapping
     public String prepareFilesPage(Model model) {

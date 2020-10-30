@@ -28,11 +28,11 @@ import java.security.Principal;
 @AllArgsConstructor
 public class CartConfirmController {
 
-    ProductService productService;
-    CartService cartService;
-    UserService userService;
-    OrderService orderService;
-    AddressService addressService;
+
+    private final CartService cartService;
+    private final UserService userService;
+    private final OrderService orderService;
+    private final AddressService addressService;
 
     @GetMapping("/cart/confirm")
     public String cart(Model model, BigDecimal transport, Principal principal) {
@@ -45,7 +45,7 @@ public class CartConfirmController {
     }
 
     @PostMapping("/cart/confirm")
-    public String cartConfirm(@Valid Address address, BindingResult bindingResult, Principal principal, BigDecimal transport,BigDecimal sum, String paymentMethod ) throws MessagingException, IOException, TemplateException {
+    public String cartConfirm(@Valid Address address, BindingResult bindingResult, Principal principal, BigDecimal transport, BigDecimal sum, String paymentMethod) throws MessagingException, IOException, TemplateException {
         if (bindingResult.hasErrors()) {
             return "cart/cart-confirm";
         }
@@ -55,11 +55,11 @@ public class CartConfirmController {
         order.setUser(userService.findByUserName(principal.getName()));
         order.setProducts(cartService.getProductsInCart());
         order.setTransportPrice(transport);
-        if (transport.equals(BigDecimal.valueOf(14))){
+        if (transport.equals(BigDecimal.valueOf(14))) {
             order.setTransportType("Inpost");
-        } else if (transport.equals(BigDecimal.valueOf(16.5))){
+        } else if (transport.equals(BigDecimal.valueOf(16.5))) {
             order.setTransportType("Inpost Kurier");
-        } else if (transport.equals(BigDecimal.valueOf(17))){
+        } else if (transport.equals(BigDecimal.valueOf(17))) {
             order.setTransportType("DPD kurier");
         }
         order.setOrderSum(sum);
@@ -72,7 +72,7 @@ public class CartConfirmController {
     }
 
     @GetMapping("/cart/confirm/checkout")
-    public String cartConfirmCheckout( ) throws NotEnoughProductsInStockException, MessagingException, IOException, TemplateException {
+    public String cartConfirmCheckout() throws NotEnoughProductsInStockException, MessagingException, IOException, TemplateException {
         cartService.checkout();
         return "redirect:/user/orders";
     }

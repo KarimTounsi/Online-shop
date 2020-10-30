@@ -19,9 +19,9 @@ import java.util.List;
 @AllArgsConstructor
 public class HomePageController {
 
-    CategoryService categoryService;
-    CartService cartService;
-    ProductService productService;
+    private final  CategoryService categoryService;
+    private final  CartService cartService;
+    private final  ProductService productService;
 
 
 

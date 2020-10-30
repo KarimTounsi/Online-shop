@@ -18,9 +18,9 @@ import java.util.List;
 public class ViewProductsFromCategoryController {
 
 
-    ProductService productService;
-    CategoryService categoryService;
-    CartService cartService;
+    private final  ProductService productService;
+    private final  CategoryService categoryService;
+    private final  CartService cartService;
 
     @GetMapping("/{categoryId}")
     public String searchProductByCategory(@PathVariable Long categoryId, Model model) {
