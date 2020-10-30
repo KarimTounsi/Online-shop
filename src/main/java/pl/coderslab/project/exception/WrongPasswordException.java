@@ -1,6 +1,6 @@
 package pl.coderslab.project.exception;
 
-import pl.coderslab.project.user.User;
+import pl.coderslab.project.user.entity.User;
 
 public class WrongPasswordException extends Exception {
 

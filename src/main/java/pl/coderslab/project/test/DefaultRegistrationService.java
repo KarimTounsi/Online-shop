@@ -2,8 +2,8 @@ package pl.coderslab.project.test;
 
 
 import lombok.RequiredArgsConstructor;
-import pl.coderslab.project.user.User;
-import pl.coderslab.project.user.UserRepository;
+import pl.coderslab.project.user.entity.User;
+import pl.coderslab.project.user.repository.UserRepository;
 
 @RequiredArgsConstructor
 public class DefaultRegistrationService implements RegistrationService {

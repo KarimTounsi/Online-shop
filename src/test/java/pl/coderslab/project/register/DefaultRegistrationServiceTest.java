@@ -12,8 +12,8 @@ import org.mockito.Mockito;
 import pl.coderslab.project.test.DefaultRegistrationService;
 import pl.coderslab.project.test.RegisterUserRequest;
 import pl.coderslab.project.test.RegisterUserResponse;
-import pl.coderslab.project.user.User;
-import pl.coderslab.project.user.UserRepository;
+import pl.coderslab.project.user.entity.User;
+import pl.coderslab.project.user.repository.UserRepository;
 
 import java.util.Random;
 

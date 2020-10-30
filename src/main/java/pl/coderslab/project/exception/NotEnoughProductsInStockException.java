@@ -1,7 +1,7 @@
 package pl.coderslab.project.exception;
 
 
-import pl.coderslab.project.product.Product;
+import pl.coderslab.project.product.entity.Product;
 
 public class NotEnoughProductsInStockException extends Exception {
 
