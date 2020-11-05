@@ -23,7 +23,6 @@
     <groupId>pl.coderslab</groupId>
     <artifactId>project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
     <name>project</name>
     <description>Demo project for Spring Boot</description>
 
